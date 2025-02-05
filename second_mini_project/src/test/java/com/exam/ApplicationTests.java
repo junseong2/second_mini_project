@@ -8,10 +8,8 @@ class ApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 		System.out.println("DemoApplicationTests");
 	}
-	@Test
-	void contextLoads1() {
-		System.out.println("DemoApplicationTests");
-	}
+
 }

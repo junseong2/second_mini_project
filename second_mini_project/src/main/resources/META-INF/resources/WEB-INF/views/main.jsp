@@ -23,16 +23,15 @@
 	    height: 40px;
 	}
  </style>
-   <link rel="stylesheet" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css" >
-   <script src="webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css" >
+<script src="webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
  <div class="App">
 	<jsp:include page="common/top.jsp" flush="true" /><br>
 	<jsp:include page="common/menu.jsp" flush="true" />
 	<hr>
-	<!--<jsp:include page="goods/goodsList.jsp" flush="true" />  -->
-	
+	<jsp:include page="goods/goodsList.jsp" flush="true" />
  </div>
 </body>
 </html>
