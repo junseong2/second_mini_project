@@ -17,9 +17,9 @@ public class MainController {
 
 	@GetMapping("/main") //main.jsp
 	@ModelAttribute("goodsList")
-	public void main(@RequestParam(required = false, defaultValue = "top")
+	public String main(@RequestParam(required = false, defaultValue = "top")
 	                    String gCategory) {
-		
+		return "main";
 		// JSP에서 보여줄 데이터고 모델에 저장해야 된다.
 		
 	}
