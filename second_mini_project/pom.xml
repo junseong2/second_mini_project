@@ -93,6 +93,12 @@
        <groupId>org.springframework.boot</groupId>
        <artifactId>spring-boot-devtools</artifactId>
     </dependency>
+    
+	<!-- lombok 의존성 추가 -->
+	<dependency>
+	    <groupId>org.projectlombok</groupId>
+	    <artifactId>lombok</artifactId>
+	</dependency>
 		
 
 		<dependency>
