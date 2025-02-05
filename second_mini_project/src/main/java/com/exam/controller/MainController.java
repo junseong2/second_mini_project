@@ -12,13 +12,13 @@ import com.exam.service.GoodsService;
 
 @Controller
 public class MainController {
-	
+	 
 	GoodsService service;
 	//생성자로 주입
 	public MainController(GoodsService service) {
 		super();
 		this.service = service;
-	}
+	}   
 
 	@GetMapping("/main") //껍데기 main.jsp 
 	@ModelAttribute("goodsList")
