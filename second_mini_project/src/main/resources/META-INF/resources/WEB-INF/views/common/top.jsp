@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c"  uri="jakarta.tags.core" %>
- <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
  <header class="border-bottom border-light border-5">
             <div class="container">
                 <div class="row">
@@ -15,7 +14,7 @@
                         </div>
                         
                         <!-- 로그인 안된 경우 화면 -->
-                     <sec:authorize access="isAnonymous()">   
+                     <c:if test="${empty login}">   
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                <a class="nav-link" href="loginForm">Login</a>
@@ -24,10 +23,10 @@
                                <a class="nav-link" href="signup">signup</a>
                             </li>
                         </ul>
-                     </sec:authorize>
+                     </c:if>
                         
                         <!-- 로그인된 경우 화면 -->
-                     <sec:authorize access="isAuthenticated()">  
+                     <c:if test="${! empty login}">     
                         <ul class="navbar-nav">
                              <li class="nav-item">
                               안녕하세요. ${login.username}님
@@ -42,7 +41,7 @@
                                <a class="nav-link" href="cartList">cartList</a>
                             </li>
                         </ul>
-                      </sec:authorize>  
+                       </c:if>  
                     </nav>
                 </div>
             </div>
