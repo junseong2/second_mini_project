@@ -6,27 +6,25 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
+import com.exam.dto.FeedbackDTO;
 import com.exam.dto.GoodsDTO;
+import com.exam.mapper.FeedbackMapper;
 import com.exam.mapper.GoodsMapper;
 
 //service 부분이니까 @Service 어노테이션 주기
 @Service
-public class GoodsServiceImpl implements GoodsService{
+public class FeedbackServiceImpl implements FeedbackService{
 
-	GoodsMapper mapper; 
+	FeedbackMapper mapper; 
 	//생성자로 주입  
-	public GoodsServiceImpl(GoodsMapper mapper) {
+	public FeedbackServiceImpl(FeedbackMapper mapper) {
 		this.mapper = mapper;  
+	}
+	@Override
+	public int writeFeedback(FeedbackDTO dto) {
+		return mapper.writeFeedback(dto);
 	}   
    
-	@Override             
-	public List<GoodsDTO> goodsList(String gCategory) {
-		return mapper.goodsList(gCategory);
-	}
-  
-	@Override 
-	public GoodsDTO goodsRetrieve(String gCode) {
-		return mapper.goodsRetrieve(gCode);
-	}
+
  
 }
