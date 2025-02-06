@@ -23,20 +23,28 @@ public class OrderController {
 	}
 
 	@GetMapping("/orderConfirm")
-	public String cartAdd(@RequestParam Integer num, Model m) {
-		
-CartDTO cartDTO = orderService.orderConfirm(num);
-		
-		MemberDTO dto =
-				(MemberDTO)m.getAttribute("login");
-		String userid = dto.getUserid();
-MemberDTO memberDTO = orderService.orderConfirmMember(userid);
+	public String cartAdd(@RequestParam(name = "num", required = true) Integer num, Model m) {
+	    // num 파라미터가 반드시 전달되어야 함을 명시합니다.
 
-		m.addAttribute("cDTO", cartDTO);
-		m.addAttribute("mDTO", memberDTO);
-		
-		return "orderConfirm";
+	    // orderService에서 해당 order에 대한 CartDTO 정보를 가져옵니다.
+	    CartDTO cartDTO = orderService.orderConfirm(num);
+	    
+	    // 로그인된 사용자의 정보를 가져옵니다.
+	    MemberDTO memberDTO = (MemberDTO) m.getAttribute("login");
+	    String userid = memberDTO.getUserid();
+	    
+	    // orderService에서 해당 사용자에 대한 MemberDTO를 가져옵니다.
+	    MemberDTO memberDetails = orderService.orderConfirmMember(userid);
+	    
+	    // 모델에 cartDTO와 memberDTO를 추가하여 뷰로 전달합니다.
+	    m.addAttribute("cDTO", cartDTO);
+	    m.addAttribute("mDTO", memberDetails);
+	    
+	    
+	    // 최종적으로 "orderConfirm" 뷰를 리턴합니다.
+	    return "orderConfirm";
 	}
+
 	
 	@PostMapping("/orderDone")
 	   public String orderDone(Model m,
