@@ -1,6 +1,6 @@
 package com.exam.controller;
 
-import java.util.List; 
+import java.util.List;  
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -81,7 +81,7 @@ public class CartController {
 		// 데이터
 		List<CartDTO> cartList = cartService.cartList(userid);
 		return cartList;
-	}
+	} 
 	
 	@GetMapping("/cartDelete") 
 	public String cartDelete(@RequestParam Integer num) {
