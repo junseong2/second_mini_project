@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"  uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SHOP_HOME</title>
+<title>메인홈페이지</title>
 <style type="text/css">
     .App {
 	  text-align: center;
@@ -32,13 +31,7 @@
 	<jsp:include page="common/top.jsp" flush="true" /><br>
 	<jsp:include page="common/menu.jsp" flush="true" />
 	<hr>
-	    <c:if test="${not empty message}">
-	        <script type="text/javascript">
-	            alert("${message}");  // 전달된 message 값을 alert로 띄운다.
-	        </script>
-  		</c:if>
- 
-	<jsp:include page="goods/goodsList.jsp" flush="true" />
+	<jsp:include page="goods/orderConfirm2.jsp" flush="true" />
  </div>
 </body>
 </html>

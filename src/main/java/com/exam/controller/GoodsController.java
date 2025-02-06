@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.exam.dto.FeedbackDTO;
 import com.exam.dto.GoodsDTO;
@@ -39,9 +40,9 @@ public class GoodsController {
 //		m.addAttribute("goodsRetrieve",dto);
 //		return "goodsRetrieve";
 //	}       
-	  
+	   
 	@GetMapping("/goodsRetrieve")
-	public ModelAndView goodsRetrieve(@RequestParam(required=false) String gCode, Model m) {
+	public ModelAndView goodsRetrieve(@RequestParam(required=false) String gCode, Model m,RedirectAttributes redirectAttributes) {
 		if(gCode==null) { //에러가 나서 GlobalExceptionHandler 에서 /goodsRetreive가 요청된 경우
 			gCode = (String)m.getAttribute("gCode");
 		}  
@@ -55,27 +56,37 @@ public class GoodsController {
 		mav.addObject("goodsRetrieve",dto);
 		//뷰 저장
 		mav.setViewName("goodsRetrieve");
-		return mav;
-	}
-	
-	//후기 작성하기
+		 
+		List<FeedbackDTO> list = feedbackService.pullFeedback(gCode);
+		//피드백 된 list 내용 모델에 저장
+	    // RedirectAttributes에 데이터 추가
+		mav.addObject("feedback", list);
+		    
+		return mav;  
+	}  
+	  
 	@PostMapping("/writeFeedback")
 	public String writeFeedback(@RequestParam String userid,
-								@RequestParam String gCode,
-								@RequestParam String gContext, Model m) {
-		
-		MemberDTO dto = (MemberDTO)m.getAttribute("login");
-		 
+	                            @RequestParam String gCode,
+	                            @RequestParam String gContext, Model m,
+	                            RedirectAttributes redirectAttributes) {
+	    MemberDTO dto = (MemberDTO)m.getAttribute("login");
     
-		FeedbackDTO feedbackDTO = new FeedbackDTO();
-		feedbackDTO.setUserid(userid);
-		feedbackDTO.setgCode(gCode);
-		feedbackDTO.setgContext(gContext);
-		 
-		int n = feedbackService.writeFeedback(feedbackDTO);
-		
-		return "redirect:/goodsRetrieve?gCode=" + gCode;
-
+	    FeedbackDTO feedbackDTO = new FeedbackDTO();
+	    feedbackDTO.setUserid(userid); 
+	    feedbackDTO.setgCode(gCode); 
+	    feedbackDTO.setgContext(gContext); 
+       
+	    int n = feedbackService.writeFeedback(feedbackDTO);
+    
+	    List<FeedbackDTO> list = feedbackService.pullFeedback(gCode);
+	    //피드백 된 list 내용 모델에 저장
+	    redirectAttributes.addFlashAttribute("feedback", list);
+    
+	    // goodsRetrieve 페이지로 리다이렉트하면서 gCode도 전달
+	    return "redirect:/goodsRetrieve?gCode=" + gCode;
 	}
+	
+	
 
 }

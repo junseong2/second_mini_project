@@ -23,7 +23,7 @@ $(document).ready(function(){
       $('#phone').val('');
     }
   });
-
+ 
   // 취소 버튼 클릭 시
   $("#cancel").on("click", function(){
     var f = $("form")[0];
