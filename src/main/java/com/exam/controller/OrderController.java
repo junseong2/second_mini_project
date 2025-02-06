@@ -39,9 +39,9 @@ public class OrderController {
 
 		m.addAttribute("cDTO", cartDTO);
 		m.addAttribute("mDTO", memberDTO);
-		
+		          
 		return "orderConfirm";
-	} 
+	}   
 	
 	@PostMapping("/orderDone")
 	   public String orderDone(Model m,
@@ -85,9 +85,11 @@ public class OrderController {
 	      
 	      return "orderDone";  
 	   }
+
+
    
 	@GetMapping("/buyGoods")
-	public String cartAdd( @RequestParam String gCode,
+	public String buyGoods( @RequestParam String gCode,
 				           @RequestParam String gSize,
 			               @RequestParam  String gColor,
 			               
@@ -97,7 +99,7 @@ public class OrderController {
 			               
 			               Model m
 			               ) {
-		
+		 
 		//실패
 		// @Validated 로 설정한 유효성체크는 에러발생시 ConstraintViolationException 예외가 발생되고
 		// @ControllerAdvice 지정한 GlobalExceptionHandler 생성.

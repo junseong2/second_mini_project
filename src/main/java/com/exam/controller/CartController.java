@@ -36,6 +36,7 @@ public class CartController {
 	public CartController(CartService cartService) {
 		this.cartService = cartService;
 	}
+	
 
 
 
@@ -90,6 +91,14 @@ public class CartController {
 		int n = cartService.cartDelete(num);
 		
 		return "redirect:cartList";
+	}
+	
+	@GetMapping("/cartDelete2") 
+	public String cartDelete2(@RequestParam Integer num) {
+		
+		int n = cartService.cartDelete(num);
+		
+		return "redirect:main"; 
 	}
 	
 	@GetMapping("/cartDeleteAll")
