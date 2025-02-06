@@ -25,13 +25,17 @@ $(document).ready(function(){
   });
  
   // 취소 버튼 클릭 시
-  $("#cancel").on("click", function(){
-    var f = $("form")[0];
-    f.action = "cartList";
-    f.method = "GET";
-  });
-
-  // 폼 제출 시
+	$("#cancel").on("click", function(){
+	    console.log("취소 버튼 클릭됨");
+	    
+	    // 예시로 num 값을 가져오고 이 값을 서버로 전달
+	    var num = $("input[name='num']").val(); // 상품 번호를 가져온다고 가정
+	    
+	    // cartDelete 경로로 리다이렉트하며 num을 URL 파라미터로 전달
+	    window.location.href = "/minipj2/cartDelete2?num=" + num;  // num 값을 쿼리 파라미터로 전달
+	});
+  
+// 폼 제출 시 
   $("form").on("submit", function(){
     this.action = "orderDone";   // orderDone
     this.method = "post";        // doPost
@@ -116,7 +120,7 @@ ${cartDTO }
        <hr>
        <div class="mt-20">
           
-       </div> 
+              </div> 
         <!--  배송지 정보 -->
        <div class="container">
           <div class="row mb-3">
@@ -130,14 +134,14 @@ ${cartDTO }
 		  <div class="row mb-3">
 		    <label for="username" class="col-sm-2 col-form-label">이름</label>
 		    <div class="col-auto">
-		      <input type="text" class="form-control" name="username" id="orderName">
+		      <input type="text" class="form-control" name="username" id="orderName" required>
 		    </div>
 		  </div>
 		  <hr>
 		  <div class="row mb-3">
 		      <div class="col-auto">
 			    <label for="sample4_postcode" class="visually-hidden">post</label>
-			    <input type="text" name="post" class="form-control" id="sample4_postcode" placeholder="우편번호">
+			    <input type="text" name="post" class="form-control" id="sample4_postcode" placeholder="우편번호" required>
 			  </div>
 			  <div class="col-auto">
 			    <button type="button" class="btn btn-primary mb-3" onclick="sample4_execDaumPostcode()">우편번호 찾기</button>
@@ -146,24 +150,24 @@ ${cartDTO }
 		   <div class="row mb-3">
 		      <div class="col-sm-5">
 			    <label for="sample4_roadAddress" class="visually-hidden">도로명주소</label>
-			    <input type="text"  name="addr1" class="form-control" id="sample4_roadAddress" placeholder="도로명주소">
+			    <input type="text"  name="addr1" class="form-control" id="sample4_roadAddress" placeholder="도로명주소" required>
 			  </div>
 			 <div class="col-sm-5">
 			    <label for="sample4_jibunAddress" class="visually-hidden">지번주소</label>
-			    <input type="text" name="addr2" class="form-control" id="sample4_jibunAddress" placeholder="지번주소">
+			    <input type="text" name="addr2" class="form-control" id="sample4_jibunAddress" placeholder="지번주소" required>
 			    <span id="guide" style="color:#999"></span>
 			  </div>
 		  </div>
 		  <hr>
 		   <div class="row mb-3">
-		      <label for="phone1" class="col-sm-2 col-form-label">전화번호</label>
+		      <label for="phone1" class="col-sm-2 col-form-label" required>전화번호</label>
 		     <div class="col-auto">
 		    	  <input type="text" name="phone" class="form-control" id="phone" >
 			 </div>	
           </div>
           <div class="col-12">
-		    <button class="btn btn-primary" id="submit">결제</button>
-		    <button type="submit" class="btn btn-primary" id="cancel">취소</button>
+		    <button type="submit" class="btn btn-primary" id="submit">결제</button>
+		    <button type="button" class="btn btn-primary" id="cancel">취소</button>
 		  </div>
       </div>
 </form>

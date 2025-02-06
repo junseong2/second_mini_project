@@ -26,7 +26,7 @@
 	  
 	  
 	  $("#cartBtn").on("click", function(){
-	    	//event.preventDefault();
+	    	event.preventDefault();
 	    	var f = $("form")[0];
 	    	f.action="cartAdd";
 	    	f.method="GET";
@@ -34,9 +34,11 @@
 	  
 	  $("#buyBtn").on("click", function(){
 	    	//event.preventDefault();
+  	        alert("이후 페이지 내 결제 및 취소 버튼 클릭 외의 경로로 이동하면 상품은 자동으로 장바구니에 추가됩니다.");
 	    	var f = $("form")[0];
 	    	f.action="buyGoods"; //수정
 	    	f.method="GET";
+        	
 	    });
 	  
 	  
