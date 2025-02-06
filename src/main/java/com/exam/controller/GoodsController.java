@@ -76,7 +76,7 @@ public class GoodsController {
 	    feedbackDTO.setUserid(userid); 
 	    feedbackDTO.setgCode(gCode); 
 	    feedbackDTO.setgContext(gContext); 
-       
+        
 	    int n = feedbackService.writeFeedback(feedbackDTO);
      
 	    List<FeedbackDTO> list = feedbackService.pullFeedback(gCode);
