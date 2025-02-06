@@ -71,10 +71,10 @@
 		                    <!-- 상품이 BALL인 경우 -->
 		                    <c:if test="${fn:contains(goodsRetrieve.gCode, 'BALL')}">
 		                        <!-- 사이즈와 색상 선택을 비활성화 -->
-		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;" disabled>
+		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;">
 		                            <option selected value="기본">기본</option>
 		                        </select>
-		                        <select class="select_change" name="gColor" id="gColor" style="font-size: 12px;" disabled>
+		                        <select class="select_change" name="gColor" id="gColor" style="font-size: 12px;">
 		                            <option selected value="기본">기본</option>
 		                        </select>
 		                    </c:if>
@@ -82,14 +82,14 @@
 		                    <!-- 상품이 BALL이 아닌 경우 -->
 		                    <c:if test="${!fn:contains(goodsRetrieve.gCode, 'BALL')}">
 		                        <!-- 사이즈와 색상 선택 활성화 -->
-		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;">
-		                            <option selected value="사이즈선택">사이즈선택</option>
+		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;" required>
+		                            <option value="" disabled selected>사이즈선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
 		                            <option value="L">L</option>
 		                            <option value="M">M</option>
 		                            <option value="S">S</option>
 		                        </select>
-		                        <select class="select_change" name="gColor" id="gColor" style="font-size: 12px;">
-		                            <option selected value="색상선택">색상선택</option>
+		                        <select class="select_change" name="gColor" id="gColor" style="font-size: 12px;" required>
+		                            <option value="" disabled selected>색상선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
 		                            <option value="navy">navy</option>
 		                            <option value="black">black</option>
 		                            <option value="ivory">ivory</option>

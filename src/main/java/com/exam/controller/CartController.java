@@ -22,6 +22,7 @@ import com.exam.service.GoodsService;
 import com.exam.service.MemberService;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Controller
@@ -46,7 +47,7 @@ public class CartController {
 			               @Size(min = 1, max = 2)
 					      // @Size 적용가능한 타입: 문자열, 컬렉션, 배열
 			               @RequestParam  String gAmount,
-			               
+			                
 			               Model m
 			               ) {
 		
@@ -57,14 +58,14 @@ public class CartController {
 		//성공
 		MemberDTO memberDTO = (MemberDTO)m.getAttribute("login");
 		String userid = memberDTO.getUserid();
-		
+		 
 		CartDTO cartDTO = new CartDTO();
 		cartDTO.setUserid(userid);
 		cartDTO.setgCode(gCode);
 		cartDTO.setgSize(gSize);
-		cartDTO.setgColor(gColor);
+		cartDTO.setgColor(gColor); 
 		cartDTO.setgAmount( Integer.parseInt(gAmount));
-		
+		 
 		int n = cartService.cartAdd(cartDTO);
 		
 		return "goods/cartAddSuccess";
