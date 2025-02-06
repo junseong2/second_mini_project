@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <script src="webjars/jquery/3.7.1/jquery.min.js"></script>
 <%@ taglib prefix="c"  uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <script>
   $(document).ready(function(){
 	  
@@ -46,49 +48,69 @@
 	<div class="row" style="display: flex;">
 		<!-- 왼쪽: 상품 정보 -->
 		<form class="row g-3 m-4" style="flex: 0 0 45%; padding: 15px;">
-			<input type="hidden" name="gCode" value="${goodsRetrieve.gCode}" >
-			<div class="row">    
-				<div class="card" style="width:100%; padding: 10px;">
-					<img src="images/items/${goodsRetrieve.gImage}.gif" class="card-img-top" alt="...">
-					<div class="card-body" style="padding: 10px;">
-						<h6 class="card-title" style="font-size: 14px;">
-							<span class="fw-bold">제품코드:</span>  
-							${goodsRetrieve.gCode}</h6>
-						<h6 class="card-text" style="font-size: 14px;">
-							<span class="fw-bold ">상품명:</span>
-							${goodsRetrieve.gName}</h6>
-						<h6 class="card-text" style="font-size: 14px;">
-							<span class="fw-bold ">가격:</span>
-							${goodsRetrieve.gPrice}</h6>
-						<h6 class="card-text" style="font-size: 14px;">
-							<span class="fw-bold ">상품옵션:</span>
-							<select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;">
-								<option selected value="사이즈선택">사이즈선택</option>
-								<option value="L">L</option>
-								<option value="M">M</option>
-								<option value="S">S</option>
-							</select>
-							<select class="select_change" name="gColor" id="gColor" style="font-size: 12px;">
-								<option selected value="색상선택">색상선택</option>
-								<option value="navy">navy</option>
-								<option value="black">black</option>
-								<option value="ivory">ivory</option>
-								<option value="white">white</option>
-								<option value="gray">gray</option>
-							</select>
-						</h6>
-						<h6 class="card-text" style="font-size: 14px;">
-							<span class="fw-bold ">주문수량:</span>
-							<input type="text" name="gAmount" value="1" id="gAmount" style="font-size: 14px;">
-							<img src="images/up.PNG" id="up" style="width: 20px; height: 20px;"> 
-							<img src="images/down.PNG" id="down" style="width: 20px; height: 20px;">
-						</h6>
-						<button class="btn btn-primary mt-3" id="buyBtn" style="padding: 5px 10px; font-size: 14px;">구매</button>
-						<button class="btn btn-primary mt-3" id="cartBtn" style="padding: 5px 10px; font-size: 14px;">장바구니</button>
-					</div>
-				</div>
-			</div>
+		    <input type="hidden" name="gCode" value="${goodsRetrieve.gCode}">
+		    <div class="row">
+		        <div class="card" style="width:100%; padding: 10px;">
+		            <img src="images/items/${goodsRetrieve.gImage}.gif" class="card-img-top" alt="...">
+		            <div class="card-body" style="padding: 10px;">
+		                <h6 class="card-title" style="font-size: 14px;">
+		                    <span class="fw-bold">제품코드:</span>  
+		                    ${goodsRetrieve.gCode}
+		                </h6>
+		                <h6 class="card-text" style="font-size: 14px;">
+		                    <span class="fw-bold">상품명:</span>
+		                    ${goodsRetrieve.gName}
+		                </h6>
+		                <h6 class="card-text" style="font-size: 14px;">
+		                    <span class="fw-bold">가격:</span>
+		                    ${goodsRetrieve.gPrice}
+		                </h6>
+		                <h6 class="card-text" style="font-size: 14px;">
+		                    <span class="fw-bold">상품옵션:</span>
+		                    
+		                    <!-- 상품이 BALL인 경우 -->
+		                    <c:if test="${fn:contains(goodsRetrieve.gCode, 'BALL')}">
+		                        <!-- 사이즈와 색상 선택을 비활성화 -->
+		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;" disabled>
+		                            <option selected value="기본">기본</option>
+		                        </select>
+		                        <select class="select_change" name="gColor" id="gColor" style="font-size: 12px;" disabled>
+		                            <option selected value="기본">기본</option>
+		                        </select>
+		                    </c:if>
+		
+		                    <!-- 상품이 BALL이 아닌 경우 -->
+		                    <c:if test="${!fn:contains(goodsRetrieve.gCode, 'BALL')}">
+		                        <!-- 사이즈와 색상 선택 활성화 -->
+		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;">
+		                            <option selected value="사이즈선택">사이즈선택</option>
+		                            <option value="L">L</option>
+		                            <option value="M">M</option>
+		                            <option value="S">S</option>
+		                        </select>
+		                        <select class="select_change" name="gColor" id="gColor" style="font-size: 12px;">
+		                            <option selected value="색상선택">색상선택</option>
+		                            <option value="navy">navy</option>
+		                            <option value="black">black</option>
+		                            <option value="ivory">ivory</option>
+		                            <option value="white">white</option>
+		                            <option value="gray">gray</option>
+		                        </select>
+		                    </c:if>
+		                </h6>
+		                <h6 class="card-text" style="font-size: 14px;">
+		                    <span class="fw-bold">주문수량:</span>
+		                    <input type="text" name="gAmount" value="1" id="gAmount" style="font-size: 14px;">
+		                    <img src="images/up.PNG" id="up" style="width: 20px; height: 20px;"> 
+		                    <img src="images/down.PNG" id="down" style="width: 20px; height: 20px;">
+		                </h6>
+		                <button class="btn btn-primary mt-3" id="buyBtn" style="padding: 5px 10px; font-size: 14px;">구매</button>
+		                <button class="btn btn-primary mt-3" id="cartBtn" style="padding: 5px 10px; font-size: 14px;">장바구니</button>
+		            </div>
+		        </div>
+		    </div>
 		</form>
+
 
 		<!-- 오른쪽: 후기 작성 및 후기 목록 (위아래로 분할) -->
 		<div style="flex: 0 0 50%; padding: 10px;">
