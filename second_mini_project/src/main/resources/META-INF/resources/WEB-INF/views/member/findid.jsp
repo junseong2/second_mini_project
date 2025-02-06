@@ -16,7 +16,7 @@
 <div id="findIdForm" style="display: flex; justify-content: center; align-items: center; height: 50vh;">
     <div style="width: 100%; max-width: 700px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
         <h3 class="text-center">아이디 찾기</h3>
-        <form action="findid" method="post">
+        <form>
             <!-- 이름 입력 부분 -->
             <div class="row mb-3" style="margin-top:20px">
                 <label for="username" class="col-sm-2 col-form-label">이름</label>
