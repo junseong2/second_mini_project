@@ -24,7 +24,7 @@ public class GoodsController {
 	
 	GoodsService goodsService;
 	FeedbackService feedbackService;
-	//생성자로 주입
+	//생성자로 주입    
 	public GoodsController(GoodsService goodsService,FeedbackService feedbackService) {
 		super();
 		this.goodsService = goodsService;
@@ -39,7 +39,7 @@ public class GoodsController {
 //		GoodsDTO dto = goodsService.goodsRetrieve(gCode);
 //		m.addAttribute("goodsRetrieve",dto);
 //		return "goodsRetrieve";
-//	}        
+//	}         
 	     
 	@GetMapping("/goodsRetrieve")
 	public ModelAndView goodsRetrieve(@RequestParam(required=false) String gCode, Model m,RedirectAttributes redirectAttributes) {
@@ -78,7 +78,7 @@ public class GoodsController {
 	    feedbackDTO.setgContext(gContext); 
        
 	    int n = feedbackService.writeFeedback(feedbackDTO);
-    
+     
 	    List<FeedbackDTO> list = feedbackService.pullFeedback(gCode);
 	    //피드백 된 list 내용 모델에 저장
 	    redirectAttributes.addFlashAttribute("feedback", list);
