@@ -45,7 +45,7 @@ public class GoodsController {
 		if(gCode==null) { //에러가 나서 GlobalExceptionHandler 에서 /goodsRetreive가 요청된 경우
 			gCode = (String)m.getAttribute("gCode");
 		}  
-		  
+		   
 		//상품 목록에서 자세히 보기로 요청한 경우에 gCode 를 세션에 저장
 		m.addAttribute("gCode",gCode);
 		
