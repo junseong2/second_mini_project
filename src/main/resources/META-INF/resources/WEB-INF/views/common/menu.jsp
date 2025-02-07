@@ -21,31 +21,18 @@ $(document).ready(function(){
                 <div class="row ">
                     <nav class="navbar navbar-expand-lg">
                         <div class="navbar-collapse">
+                        
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="main?gCategory=top">top</a>
-                                </li>
-                            </ul>
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="main?gCategory=dress">dress</a>
-                                </li>
-                            </ul>
-                              <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="main?gCategory=outer">outer</a>
-                                </li>
-                            </ul>
-                             <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="main?gCategory=bottom">bottom</a>
+                                    <a class="nav-link" href="main?gCategory=sojung">SOJUNG</a>
                                 </li>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="main?gCategory=bowling">bowling</a>
+                                    <a class="nav-link" href="main?gCategory=junseong">JUNSEONG</a>
                                 </li>
                             </ul>
+
                             <form id="search">
                            		<ul class="navbar-nav">
 	                                <li class="nav-item">
