@@ -58,7 +58,7 @@
 		    <input type="hidden" name="gCode" value="${goodsRetrieve.gCode}">
 		    <div class="row">
 		        <div class="card" style="width:100%; padding: 10px;">
-		            <img src="images/items/${goodsRetrieve.gImage}.gif" class="card-img-top" alt="...">
+		            <img src="images/items/${goodsRetrieve.gImage}" class="card-img-top" alt="...">
 		            <div class="card-body" style="padding: 10px;">
 		                <h6 class="card-title" style="font-size: 14px;">
 		                    <span class="fw-bold">제품코드:</span>  
