@@ -4,11 +4,16 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.exam.mapper.FeedbackMapper">
    
+   <!-- 후기 작성하기 -->
 	<insert id="writeFeedback" parameterType="FeedbackDTO">
 		INSERT INTO feedback (userid, gCode, gContext,feedbackdate) 
 		values (#{userid}, #{gCode}, #{gContext}, now());
-
 	</insert>
-	 
+	
+	<!-- 작성한 후기 가져오기 -->
+	<select id="pullFeedback" parameterType="string" resultType="FeedbackDTO">
+		select userid, gCode, gContext, feedbackdate from feedback
+		where gCode = #{gCode}
+	</select>
 	 
 </mapper>

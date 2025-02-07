@@ -10,40 +10,39 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.exam.dto.CartDTO;
 import com.exam.dto.MemberDTO;
 import com.exam.dto.OrderDTO;
+import com.exam.service.CartService;
 import com.exam.service.OrderService;
+
+import jakarta.validation.constraints.Size;
 
 @Controller
 @SessionAttributes("login")
 public class OrderController {
 
 	OrderService orderService;
+	CartService cartService; 
 	
-	public OrderController(OrderService orderService) {
+	public OrderController(OrderService orderService,CartService cartService) {
 		this.orderService = orderService;
-	}
+		this.cartService = cartService;
+	} 
 
 	@GetMapping("/orderConfirm")
-	public String cartAdd(@RequestParam(name = "num", required = true) Integer num, Model m) {
-	    // num 파라미터가 반드시 전달되어야 함을 명시합니다.
 
-	    // orderService에서 해당 order에 대한 CartDTO 정보를 가져옵니다.
-	    CartDTO cartDTO = orderService.orderConfirm(num);
-	    
-	    // 로그인된 사용자의 정보를 가져옵니다.
-	    MemberDTO memberDTO = (MemberDTO) m.getAttribute("login");
-	    String userid = memberDTO.getUserid();
-	    
-	    // orderService에서 해당 사용자에 대한 MemberDTO를 가져옵니다.
-	    MemberDTO memberDetails = orderService.orderConfirmMember(userid);
-	    
-	    // 모델에 cartDTO와 memberDTO를 추가하여 뷰로 전달합니다.
-	    m.addAttribute("cDTO", cartDTO);
-	    m.addAttribute("mDTO", memberDetails);
-	    
-	    
-	    // 최종적으로 "orderConfirm" 뷰를 리턴합니다.
-	    return "orderConfirm";
-	}
+	public String cartAdd(@RequestParam Integer num, Model m) {
+		
+		CartDTO cartDTO = orderService.orderConfirm(num);
+		
+		MemberDTO dto =
+				(MemberDTO)m.getAttribute("login");
+		String userid = dto.getUserid();
+		MemberDTO memberDTO = orderService.orderConfirmMember(userid);
+
+		m.addAttribute("cDTO", cartDTO);
+		m.addAttribute("mDTO", memberDTO);
+		          
+		return "orderConfirm";
+	}   
 
 	
 	@PostMapping("/orderDone")
@@ -63,7 +62,7 @@ public class OrderController {
 	      String gSize = cartDTO.getgSize();
 	      String gColor = cartDTO.getgColor(); 
 	      int gAmount = cartDTO.getgAmount();
-	      
+	        
 	      OrderDTO orderDTO = new OrderDTO();
 	      orderDTO.setNum(num);
 	      orderDTO.setUserid(userid);
@@ -89,9 +88,54 @@ public class OrderController {
 	      return "orderDone";  
 	   }
 
+
+   
+	@GetMapping("/buyGoods")
+	public String buyGoods( @RequestParam String gCode,
+				           @RequestParam String gSize,
+			               @RequestParam  String gColor,
+			               
+			               @Size(min = 1, max = 2)
+					      // @Size 적용가능한 타입: 문자열, 컬렉션, 배열
+			               @RequestParam  String gAmount,
+			               
+			               Model m
+			               ) {
+		 
+		//실패
+		// @Validated 로 설정한 유효성체크는 에러발생시 ConstraintViolationException 예외가 발생되고
+		// @ControllerAdvice 지정한 GlobalExceptionHandler 생성.
+		
+		//성공
+		MemberDTO memberDTO = (MemberDTO)m.getAttribute("login");
+		String userid = memberDTO.getUserid();
+		
+		CartDTO cartDTO = new CartDTO();
+		cartDTO.setUserid(userid);
+		cartDTO.setgCode(gCode);
+		cartDTO.setgSize(gSize);
+		cartDTO.setgColor(gColor);
+		cartDTO.setgAmount( Integer.parseInt(gAmount));
+		
+		int n = cartService.cartAdd(cartDTO);
+		int num = cartService.getLatestNum(cartDTO);
+		System.out.println(cartDTO); 
+		
+		//m.addAttribute("cartDTO",cartDTO);
+		
+		CartDTO cDTO = orderService.orderConfirm(num);
+		
+		MemberDTO dto =
+				(MemberDTO)m.getAttribute("login");
+		MemberDTO mDTO = orderService.orderConfirmMember(userid);
+
+		m.addAttribute("cDTO", cDTO);
+		m.addAttribute("mDTO", mDTO);
+		
+		return "orderConfirm2";
+	} 
 	
-	
-}
+} 
 
 
 

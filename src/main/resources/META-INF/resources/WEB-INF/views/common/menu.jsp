@@ -21,9 +21,14 @@
                                     <a class="nav-link" href="main?gCategory=outer">outer</a>
                                 </li>
                             </ul>
-                              <ul class="navbar-nav">
+                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="main?gCategory=bottom">bottom</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="main?gCategory=bowling">bowling</a>
                                 </li>
                             </ul>
                         </div>
