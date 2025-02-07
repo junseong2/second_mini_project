@@ -29,7 +29,7 @@
 	  
 	  
 	  $("#cartBtn").on("click", function(){
-	    	event.preventDefault();
+	    	//event.preventDefault();
 	    	var f = $("form")[0];
 	    	f.action="cartAdd";
 	    	f.method="GET";
