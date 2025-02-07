@@ -14,7 +14,7 @@
 
 		<img src="images/items/${dto.gImage}" width="200" height="250">
 	  </a>
-       <div class="mt-4 fs-6">${dto.gName}</div>
+       <div class="mt-4 fs-6"><strong>${dto.gName}</strong></div>
        <div class="mt-2 fs-6">${dto.gContent}</div>
        <div class="mt-2 fs-6">${dto.gPrice}</div>
     </div>
