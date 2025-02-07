@@ -29,7 +29,7 @@ public class GoodsController {
 		super();
 		this.goodsService = goodsService;
 		this.feedbackService = feedbackService;
-	}
+	} 
 
 //	@GetMapping("/goodsRetrieve") //껍데기 retreive.jsp 
 //	public String goodsRetrieve(@RequestParam(required=false) String gCode, Model m) {

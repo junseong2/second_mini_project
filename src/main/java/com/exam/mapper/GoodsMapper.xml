@@ -32,5 +32,12 @@
 	 
 	 </select>
 	 
+	 <insert id="goodsAdd" parameterType="GoodsDTO" >
+	 	insert into goods (gCode,gCategory,gName,gContent,
+	                       gPrice,gImage)
+	   values ( #{gCode},#{gCategory},#{gName},#{gContent},
+	            #{gPrice},#{gImage} )  
+	 </insert>
+	 
 	 
 </mapper>
