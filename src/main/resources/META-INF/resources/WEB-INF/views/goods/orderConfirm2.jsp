@@ -35,7 +35,7 @@ $(document).ready(function(){
 	    window.location.href = "/minipj2/cartDelete2?num=" + num;  // num 값을 쿼리 파라미터로 전달
 	});
   
-// 폼 제출 시 
+// 폼 제출 시   
   $("form").on("submit", function(){
     this.action = "orderDone";   // orderDone
     this.method = "post";        // doPost
