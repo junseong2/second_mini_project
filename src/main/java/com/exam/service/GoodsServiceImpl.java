@@ -30,8 +30,12 @@ public class GoodsServiceImpl implements GoodsService{
 	}
 
 	@Override
-	public List<GoodsDTO> search(String gName) {
+	public int goodsAdd(GoodsDTO dto) {
+		return mapper.goodsAdd(dto);
+    
+  @Override
+  public List<GoodsDTO> search(String gName) {
 		return mapper.search(gName);
-	}
+
  
 }
