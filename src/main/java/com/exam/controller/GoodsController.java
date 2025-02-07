@@ -45,11 +45,10 @@ public class GoodsController {
 	       
 	@GetMapping("/goodsRetrieve")
 	public ModelAndView goodsRetrieve(@RequestParam(required=false) String gCode, Model m,RedirectAttributes redirectAttributes) {
-		if(gCode==null) { //에러가 나서 GlobalExceptionHandler 에서 /goodsRetreive가 요청된 경우
+		if(gCode==null) {
 			gCode = (String)m.getAttribute("gCode");
 		}      
 		   
-		//상품 목록에서 자세히 보기로 요청한 경우에 gCode 를 세션에 저장
 		m.addAttribute("gCode",gCode);
 		  
 		GoodsDTO dto = goodsService.goodsRetrieve(gCode);
@@ -60,8 +59,6 @@ public class GoodsController {
 		mav.setViewName("goodsRetrieve");
 		  
 		List<FeedbackDTO> list = feedbackService.pullFeedback(gCode);
-		//피드백 된 list 내용 모델에 저장
-	    // RedirectAttributes에 데이터 추가
 		mav.addObject("feedback", list);
 		    
 		return mav;  
