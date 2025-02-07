@@ -14,7 +14,7 @@
 	 	        gContent,
 	 	        gPrice,
 	 	        gImage
-	 	  from goods
+	 	  from leegoods
 	 	  where gCategory = #{gCategory}
 	 
 	 </select>
@@ -27,14 +27,14 @@
 	 	        gContent,
 	 	        gPrice,
 	 	        gImage
-	 	  from goods
+	 	  from leegoods
 	 	  where gCode = #{gCode}
 	 
 	 </select>
 	 
 
 	 <insert id="goodsAdd" parameterType="GoodsDTO" >
-	 	insert into goods (gCode,gCategory,gName,gContent,
+	 	insert into leegoods (gCode,gCategory,gName,gContent,
 	                       gPrice,gImage)
 	   values ( #{gCode},#{gCategory},#{gName},#{gContent},
 	            #{gPrice},#{gImage} )  
@@ -47,7 +47,7 @@
 	 	        gContent,
 	 	        gPrice,
 	 	        gImage
-	 	  from goods
+	 	  from leegoods
 	 	  where gName like CONCAT('%', #{gName}, '%')
 	 </select>
 
