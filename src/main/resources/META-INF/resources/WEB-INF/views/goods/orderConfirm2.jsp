@@ -23,18 +23,23 @@ $(document).ready(function(){
       $('#phone').val('');
     }
   });
-
+ 
   // 취소 버튼 클릭 시
-	  //취소 버튼 누르면 홈
-	  $("#cancel").on("click",function(){
-		 window.location.href="/minipj2/main"; 
-	  });
-
-  // 폼 제출 시
-	  $("form").on("submit", function(){
-	    this.action = "orderDone";   // orderDone
-	    this.method = "post";        // doPost
-	  });
+	$("#cancel").on("click", function(){
+	    console.log("취소 버튼 클릭됨");
+	    
+	    // 예시로 num 값을 가져오고 이 값을 서버로 전달
+	    var num = $("input[name='num']").val(); // 상품 번호를 가져온다고 가정
+	    
+	    // cartDelete 경로로 리다이렉트하며 num을 URL 파라미터로 전달
+	    window.location.href = "/minipj2/cartDelete2?num=" + num;  // num 값을 쿼리 파라미터로 전달
+	});
+  
+// 폼 제출 시 
+  $("form").on("submit", function(){
+    this.action = "orderDone";   // orderDone
+    this.method = "post";        // doPost
+  });
 
 }); // end ready
 </script>
@@ -115,7 +120,7 @@ ${cartDTO }
        <hr>
        <div class="mt-20">
           
-       </div> 
+              </div> 
         <!--  배송지 정보 -->
        <div class="container">
           <div class="row mb-3">

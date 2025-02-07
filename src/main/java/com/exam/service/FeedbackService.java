@@ -13,4 +13,5 @@ import com.exam.dto.MemberDTO;
 public interface FeedbackService {
 
 	public int writeFeedback(FeedbackDTO dto);
+	public List<FeedbackDTO> pullFeedback(String gCode);
 }

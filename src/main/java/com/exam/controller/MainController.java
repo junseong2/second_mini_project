@@ -18,7 +18,7 @@ public class MainController {
 	public MainController(GoodsService service) {
 		super();
 		this.service = service;
-	}   
+	}      
 
 	@GetMapping("/main") //껍데기 main.jsp 
 	@ModelAttribute("goodsList")
@@ -27,6 +27,6 @@ public class MainController {
 		//request scope 에 저장됨..
 		List<GoodsDTO> list = service.goodsList(gCategory);
 		return list; 
-	}
+	}  
 
 }

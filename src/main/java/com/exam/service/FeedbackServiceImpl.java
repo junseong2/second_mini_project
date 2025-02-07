@@ -23,6 +23,10 @@ public class FeedbackServiceImpl implements FeedbackService{
 	@Override
 	public int writeFeedback(FeedbackDTO dto) {
 		return mapper.writeFeedback(dto);
+	}
+	@Override
+	public List<FeedbackDTO> pullFeedback(String gCode) {
+		return mapper.pullFeedback(gCode);
 	}   
    
 

@@ -41,4 +41,21 @@
 				close=")"> #{item} </foreach>
 		</where>
 	</delete>
+	
+	
+	<!-- 가장 최근에 추가된 num을 조회하는 select 문 -->
+<select id="getLatestNum" parameterType="CartDTO" resultType="int">
+    select num 
+    from cart 
+    where userid = #{userid} 
+      and gCode = #{gCode} 
+      and gSize = #{gSize} 
+      and gColor = #{gColor}
+    order by num desc 
+    limit 1
+</select>
+	
+	
+
+	
 </mapper>
