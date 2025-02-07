@@ -1,4 +1,7 @@
+<%@page import="com.exam.dto.CartDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
+
     pageEncoding="UTF-8"%>
 <script src="webjars/jquery/3.7.1/jquery.min.js"></script>
 <%@ taglib prefix="c"  uri="jakarta.tags.core" %>
@@ -45,11 +48,13 @@
 	
   });//end ready
 </script> 
+
 <div class="container">
 	<div>${errorMessage }</div>
 	<div class="row" style="display: flex;">
 		<!-- 왼쪽: 상품 정보 -->
 		<form class="row g-3 m-4" style="flex: 0 0 45%; padding: 15px;">
+
 		    <input type="hidden" name="gCode" value="${goodsRetrieve.gCode}">
 		    <div class="row">
 		        <div class="card" style="width:100%; padding: 10px;">
@@ -111,12 +116,14 @@
 		            </div>
 		        </div>
 		    </div>
+
 		</form>
 
 
 		<!-- 오른쪽: 후기 작성 및 후기 목록 (위아래로 분할) -->
 		<div style="flex: 0 0 50%; padding: 10px;">
 			<!-- 후기 작성 폼 -->
+
 			<!-- 로그인 상태 체크 -->
 			<c:if test="${not empty login}">
 			    <!-- 로그인된 사용자만 후기 작성 폼을 볼 수 있도록 조건부로 표시 -->
@@ -162,6 +169,7 @@
 			        </div>
 			    </c:forEach>
 			    <!-- 후기 항목 반복 끝 -->
+
 			</div>
 			
 		</div>
