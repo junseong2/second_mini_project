@@ -16,7 +16,7 @@
 	  </a>
        <div class="mt-4 fs-6"><strong>${dto.gName}</strong></div>
        <div class="mt-2 fs-6">${dto.gContent}</div>
-       <div class="mt-2 fs-6">${dto.gPrice}</div>
+       <div class="mt-2 fs-6" style="font-weight: bold; color: red;">${dto.gPrice}</div>
     </div>
   </c:forEach>  
  

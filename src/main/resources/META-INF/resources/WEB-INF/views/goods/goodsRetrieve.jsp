@@ -162,9 +162,17 @@
 
 			<!-- 로그인 안된 경우 -->
 			<c:if test="${empty login}">
-			    <div style="font-size: 14px; color: red; padding: 10px; margin-bottom:20px; font-size:1.2rem; font-weight:700">
-			        후기를 작성하려면 먼저 로그인해주세요.
-			    </div>
+			    <form id="feedbackForm" action="writeFeedback" method="post" class="column g-3 m-4" style="width:100%; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; padding: 15px; margin-bottom: 20px">
+			        <input type="hidden" name="gCode" value="${goodsRetrieve.gCode}">
+			        <input type="hidden" name="userid" value="${login.userid}">
+			        <h5 style="font-size: 14px; color: red; padding: 10px; margin-bottom:15px; font-size:1.2rem; font-weight:700">후기 작성 (불가능)</h5>
+			
+			        <!-- 사용자 이름과 후기 입력란을 가로로 배치 -->
+			        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+			            <input type="text" name="gContext" placeholder="후기 작성을 위해서는 로그인 하셔야 합니다." style="width: 70%; padding: 8px; font-size: 14px; margin-right: 10px;" disabled>
+			            <button type="submit" style="padding: 6px 12px; font-size: 14px;" class="btn btn-success" disabled>작성</button>
+			        </div>
+			    </form>
 			</c:if>
 
 			<!-- 후기 목록 -->

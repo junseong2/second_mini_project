@@ -25,8 +25,8 @@
 		</collection>
 	</resultMap>
 	<select id="cartList" resultMap="userResultMap"
-		parameterType="string"> select * from cart join goods on cart.gCode =
-		goods.gCode where userid = #{userid} order by num </select>
+		parameterType="string"> select * from cart join leegoods on cart.gCode =
+		leegoods.gCode where userid = #{userid} order by num </select>
 	<delete id="cartDelete" parameterType="int"> delete from cart where
 		num = #{num} </delete>
 	<!-- 멀티 delete mysql sql문: delete from emp where empno IN ( 1001, 1002,.... 
