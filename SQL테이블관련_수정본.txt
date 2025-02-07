@@ -8,16 +8,15 @@ insert into goods values ('BALL04','bowling', 'PHYSIX SOLID (피직스 솔리드
 
 #bowling 카테고리 추가함으로 인해
 #bowling 에는 gSize 및 gColor 수정이 안되도록 "기본" 으로 설정되게 함
-#원래 gSize는 CHAR(1) 이었는데 2글자인 기본이 되어야하므로 VARCHAR(2)으로 수정
-
+#원래 gSize는 CHAR(1) 이었는데 varchar(5)로 수정
 
 #cart 테이블 수정
 ALTER TABLE cart
-MODIFY COLUMN gSize VARCHAR(2) NOT NULL;
+MODIFY COLUMN gSize VARCHAR(5) NOT NULL;
 
 #orderinfo 테이블 수정
 ALTER TABLE orderinfo
-MODIFY COLUMN gSize VARCHAR(2) NOT NULL;
+MODIFY COLUMN gSize VARCHAR(5) NOT NULL;
 
 
 #볼링공들 gName 앞에 [공] 추가

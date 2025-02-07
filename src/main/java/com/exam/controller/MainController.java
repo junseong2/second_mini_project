@@ -32,7 +32,7 @@ public class MainController {
 	
 	@PostMapping("/search")
 	@ModelAttribute("goodsList") 
-	public List<GoodsDTO> search(@RequestParam String search) {
+	public List<GoodsDTO> search(@RequestParam(required = false, defaultValue = "") String search) {
 		//JSP 에서 보여줄 데이터, 이것을 모델에 저장해야 함
 		//request scope 에 저장됨..
 		List<GoodsDTO> list = service.search(search);

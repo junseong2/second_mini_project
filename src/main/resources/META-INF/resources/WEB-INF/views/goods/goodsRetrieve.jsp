@@ -30,7 +30,7 @@
 	  
 	  $("#cartBtn").on("click", function(){
 	    	//event.preventDefault();
-	    	var f = $("form")[0];
+	    	var f = $("#cartForm")[0];
 	    	f.action="cartAdd";
 	    	f.method="GET";
 	    });
@@ -38,7 +38,7 @@
 	  $("#buyBtn").on("click", function(){
 	    	//event.preventDefault();
   	        alert("이후 페이지 내 결제 및 취소 버튼 클릭 외의 경로로 이동하면 상품은 자동으로 장바구니에 추가됩니다.");
-	    	var f = $("form")[0];
+	    	var f = $("#cartForm")[0];
 	    	f.action="buyGoods"; //수정
 	    	f.method="GET";
         	
@@ -53,7 +53,7 @@
 	<div>${errorMessage }</div>
 	<div class="row" style="display: flex;">
 		<!-- 왼쪽: 상품 정보 -->
-		<form class="row g-3 m-4" style="flex: 0 0 45%; padding: 15px;">
+		<form id="cartForm" class="row g-3 m-4" style="flex: 0 0 45%; padding: 15px;">
 
 		    <input type="hidden" name="gCode" value="${goodsRetrieve.gCode}">
 		    <div class="row">
@@ -75,7 +75,7 @@
 		                <h6 class="card-text" style="font-size: 14px;">
 		                    <span class="fw-bold">상품옵션:</span>
 		                    
-		                    <!-- 상품이 BALL인 경우 -->
+		                    <!-- 상품 gCode가 BALL을 포함한 경우 -->
 		                    <c:if test="${fn:contains(goodsRetrieve.gCode, 'BALL')}">
 		                        <!-- 사이즈와 색상 선택을 비활성화 -->
 		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;">
@@ -85,9 +85,26 @@
 		                            <option selected value="기본">기본</option>
 		                        </select>
 		                    </c:if>
+		                    
+            		        <!-- 상품 gCode가 TSHIRT인 경우 -->
+		                    <c:if test="${fn:contains(goodsRetrieve.gCode, 'TSHIRT')}">
+		                        <!-- 사이즈 선택 O, 색상 선택 X 무조건 기본 -->
+		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;">
+		                            <option value="" disabled selected required>사이즈선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
+		                            <option  value="90">90</option>
+		                            <option  value="95">95</option>
+		                            <option  value="100">100</option>
+		                            <option  value="110">110</option>
+		                            <option  value="120">120</option>
+		                            <option  value="130">130</option>
+		                        </select>
+		                        <select class="select_change" name="gColor" id="gColor" style="font-size: 12px;">
+		                            <option selected value="기본">기본</option>
+		                        </select>
+		                    </c:if>
 		
-		                    <!-- 상품이 BALL이 아닌 경우 -->
-		                    <c:if test="${!fn:contains(goodsRetrieve.gCode, 'BALL')}">
+		                    <!-- 상품 gCode가 ball, tshirt를 포함하지 않은 경우 -->
+		                    <c:if test="${!fn:contains(goodsRetrieve.gCode, 'BALL') && !fn:contains(goodsRetrieve.gCode, 'TSHIRT')}">
 		                        <!-- 사이즈와 색상 선택 활성화 -->
 		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;" required>
 		                            <option value="" disabled selected>사이즈선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
@@ -127,7 +144,7 @@
 			<!-- 로그인 상태 체크 -->
 			<c:if test="${not empty login}">
 			    <!-- 로그인된 사용자만 후기 작성 폼을 볼 수 있도록 조건부로 표시 -->
-			    <form action="writeFeedback" method="post" class="column g-3 m-4" style="width:100%; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; padding: 15px; margin-bottom: 20px">
+			    <form id="feedbackForm" action="writeFeedback" method="post" class="column g-3 m-4" style="width:100%; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; padding: 15px; margin-bottom: 20px">
 			        <input type="hidden" name="gCode" value="${goodsRetrieve.gCode}">
 			        <input type="hidden" name="userid" value="${login.userid}">
 			        <h5 style="font-size: 14px; color: green; padding: 10px; margin-bottom:15px; font-size:1.2rem; font-weight:700">후기 작성</h5>
