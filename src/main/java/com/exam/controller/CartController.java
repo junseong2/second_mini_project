@@ -67,7 +67,7 @@ public class CartController {
 		cartDTO.setgColor(gColor); 
 		cartDTO.setgAmount( Integer.parseInt(gAmount));
 		 
-		int n = cartService.cartAdd(cartDTO);
+		int n = cartService.cartAdd(cartDTO); 
 		
 		return "goods/cartAddSuccess";
 	}
