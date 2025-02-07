@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c"  uri="jakarta.tags.core" %>
+<script src="webjars/jquery/3.7.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+  // 폼 제출 시
+	  $("form").on("submit", function(){
+	    this.action = "search";   // orderDone
+	    this.method = "post";        // doPost
+	  });
+
+}); // end ready
+</script>
 <!-- menu.jsp -->
  <header>
             <div class="container">
@@ -31,12 +44,14 @@
                                     <a class="nav-link" href="main?gCategory=bowling">bowling</a>
                                 </li>
                             </ul>
+                            <form>
                            		<ul class="navbar-nav">
 	                                <li class="nav-item">
-	                               		<input type="context" name="search" placeholder="검색할 키워드를 입력하세요." style="border-radius:20px; width:300px">
+	                               		<input type="text" name="search" placeholder="검색할 키워드를 입력하세요." style="border-radius:20px; width:300px">
 	                               		<button type="submit" class="btn btn-success">검색</button>
 	                           		</li>
                             	</ul>
+                            </form>
                    
 
                         </div>

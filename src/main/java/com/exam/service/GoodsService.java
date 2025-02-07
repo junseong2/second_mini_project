@@ -11,4 +11,5 @@ public interface GoodsService {
 
 	public List<GoodsDTO> goodsList(String gCategory);
 	public GoodsDTO goodsRetrieve(String gCode);
+	public List<GoodsDTO> search(String gName);
 }

@@ -18,3 +18,9 @@ MODIFY COLUMN gSize VARCHAR(2) NOT NULL;
 #orderinfo 테이블 수정
 ALTER TABLE orderinfo
 MODIFY COLUMN gSize VARCHAR(2) NOT NULL;
+
+
+#볼링공들 gName 앞에 [공] 추가
+UPDATE goods
+SET gName = CONCAT('[공] ', gName)
+WHERE gCategory = 'bowling';
