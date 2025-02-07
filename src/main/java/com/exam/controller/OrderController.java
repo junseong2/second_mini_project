@@ -28,6 +28,7 @@ public class OrderController {
 	} 
 
 	@GetMapping("/orderConfirm")
+
 	public String cartAdd(@RequestParam Integer num, Model m) {
 		
 		CartDTO cartDTO = orderService.orderConfirm(num);
@@ -42,6 +43,7 @@ public class OrderController {
 		          
 		return "orderConfirm";
 	}   
+
 	
 	@PostMapping("/orderDone")
 	   public String orderDone(Model m,
