@@ -31,6 +31,14 @@
                                     <a class="nav-link" href="main?gCategory=bowling">bowling</a>
                                 </li>
                             </ul>
+                           		<ul class="navbar-nav">
+	                                <li class="nav-item">
+	                               		<input type="context" name="search" placeholder="검색할 키워드를 입력하세요." style="border-radius:20px; width:300px">
+	                               		<button type="submit" class="btn btn-success">검색</button>
+	                           		</li>
+                            	</ul>
+                   
+
                         </div>
                     </nav>
                 </div>
