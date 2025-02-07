@@ -29,8 +29,8 @@ public class GoodsController {
 		super();
 		this.goodsService = goodsService;
 		this.feedbackService = feedbackService;
-	}
-
+	}     
+ 
 //	@GetMapping("/goodsRetrieve") //껍데기 retreive.jsp 
 //	public String goodsRetrieve(@RequestParam(required=false) String gCode, Model m) {
 //		상품 목록에서 자세히 보기로 요청한 경우에 gCode 를 세션에 저장
@@ -56,7 +56,7 @@ public class GoodsController {
 		mav.addObject("goodsRetrieve",dto);
 		//뷰 저장
 		mav.setViewName("goodsRetrieve");
-		 
+		  
 		List<FeedbackDTO> list = feedbackService.pullFeedback(gCode);
 		//피드백 된 list 내용 모델에 저장
 	    // RedirectAttributes에 데이터 추가
@@ -76,7 +76,7 @@ public class GoodsController {
 	    feedbackDTO.setUserid(userid); 
 	    feedbackDTO.setgCode(gCode); 
 	    feedbackDTO.setgContext(gContext); 
-        
+             
 	    int n = feedbackService.writeFeedback(feedbackDTO);
      
 	    List<FeedbackDTO> list = feedbackService.pullFeedback(gCode);

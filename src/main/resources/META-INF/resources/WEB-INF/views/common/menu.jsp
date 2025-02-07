@@ -6,10 +6,12 @@
 
 $(document).ready(function(){
   // 폼 제출 시
-	  $("form").on("submit", function(){
-	    this.action = "search";   // orderDone
-	    this.method = "post";        // doPost
-	  });
+	  $("#search").on("click", function(){
+	    	//event.preventDefault();
+	    	var f = $("#search")[0];
+	    	f.action="search";
+	    	f.method="post";
+	    });
 
 }); // end ready
 </script>
@@ -44,7 +46,7 @@ $(document).ready(function(){
                                     <a class="nav-link" href="main?gCategory=bowling">bowling</a>
                                 </li>
                             </ul>
-                            <form>
+                            <form id="search">
                            		<ul class="navbar-nav">
 	                                <li class="nav-item">
 	                               		<input type="text" name="search" placeholder="검색할 키워드를 입력하세요." style="border-radius:20px; width:300px">

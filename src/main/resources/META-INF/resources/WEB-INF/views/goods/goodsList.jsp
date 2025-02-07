@@ -16,6 +16,6 @@
        <div class="mt-2 fs-6">${dto.gPrice}</div>
     </div>
   </c:forEach>  
-
+ 
   </div>
 </div>
