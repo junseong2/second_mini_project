@@ -86,8 +86,8 @@ public class OrderController {
 	      return "orderDone";  
 	   }
 
-
-   
+ 
+         
 	@GetMapping("/buyGoods")
 	public String buyGoods( @RequestParam String gCode,
 				           @RequestParam String gSize,
@@ -122,14 +122,14 @@ public class OrderController {
 		//m.addAttribute("cartDTO",cartDTO);
 		
 		CartDTO cDTO = orderService.orderConfirm(num);
-		
+		 
 		MemberDTO dto =
 				(MemberDTO)m.getAttribute("login");
 		MemberDTO mDTO = orderService.orderConfirmMember(userid);
 
 		m.addAttribute("cDTO", cDTO);
 		m.addAttribute("mDTO", mDTO);
-		
+		   
 		return "orderConfirm2";
 	} 
 	

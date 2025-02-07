@@ -22,6 +22,7 @@
                              <li class="nav-item">
                                <a class="nav-link" href="signup">signup</a>
                             </li>
+
                
                         </ul>
                      </c:if>
