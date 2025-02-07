@@ -17,21 +17,21 @@ import jakarta.validation.Path;
 
 @Controller
 public class ManagerController {
-	 
-	GoodsService goodsService;
-	
-	
+    
+   GoodsService goodsService;
+   
+   
 
     public ManagerController(GoodsService goodsService) {
-		this.goodsService = goodsService;
-	}
+      this.goodsService = goodsService;
+   }
 
 
-	@GetMapping("/manager") 
+   @GetMapping("/manager") 
     public String manager() {
         return "manager";  
     }
- 
+
 
     @PostMapping("/goodsRegister")
     public String registerGoods(@RequestParam String gCode,
@@ -42,7 +42,8 @@ public class ManagerController {
                                 @RequestParam MultipartFile gImage) {
 
         String imageFileName = gImage.getOriginalFilename(); 
-        File f = new File("C:/springboot3_study/sts-4.27.0.RELEASE/workspace/second_mini_project/src/main/resources/static/images/items/", imageFileName);
+//        File f = new File("C:/springboot3_study/sts-4.27.0.RELEASE/workspace/second_mini_project/src/main/resources/static/images/items/", imageFileName);
+        File f = new File("C://upload", imageFileName);
         
         try {
             gImage.transferTo(new File(f.toString()));
@@ -54,7 +55,7 @@ public class ManagerController {
 
         goodsService.goodsAdd(goods);
         
-        return "redirect:/main"; 
+        return "redirect:/main";  
     }
 }
     

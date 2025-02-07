@@ -1,5 +1,5 @@
 package com.exam.controller;
-
+        
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -25,11 +25,10 @@ public class GoodsController {
 	GoodsService goodsService;
 	FeedbackService feedbackService;
 	//생성자로 주입    
-	public GoodsController(GoodsService goodsService,FeedbackService feedbackService) {
-		super();
+	public GoodsController(GoodsService goodsService,FeedbackService feedbackService) {  
 		this.goodsService = goodsService;
 		this.feedbackService = feedbackService;
-
+ 
 	}     
  
 
