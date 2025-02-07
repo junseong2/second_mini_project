@@ -40,5 +40,10 @@ public class CartServiceImpl implements CartService {
 		return mapper.cartDeleteAll(list);
 	}
 
+	@Override
+	public int getLatestNum(CartDTO dto) {
+		return mapper.getLatestNum(dto);
+	}
+
 	
 }

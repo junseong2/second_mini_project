@@ -12,5 +12,5 @@ public interface CartService {
 	public List<CartDTO> cartList(String userid);
 	public int cartDelete(int num);
 	public int cartDeleteAll(List<String> list);
-	
+	public int getLatestNum(CartDTO dto);
 }
