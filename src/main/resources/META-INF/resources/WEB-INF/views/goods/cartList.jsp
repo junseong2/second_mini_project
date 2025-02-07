@@ -61,7 +61,7 @@
 	<input type="checkbox" name="check"  class="check" value="${cartDTO.num}">
 						            </td> 
 					                <td>${cartDTO.num}</td> 
-                                    <td><img src="images/items/${cartDTO.goodsList[0].gImage}.gif" width="50" height="50" ></td>
+                                    <td><img src="images/items/${cartDTO.goodsList[0].gImage}" width="50" height="50" ></td>
                                     <td>${cartDTO.gCode}&nbsp;&nbsp;${cartDTO.gSize}&nbsp;/&nbsp;${cartDTO.gColor}</td>
                                     <td>${cartDTO.goodsList[0].gPrice}</td>
                                     <td>${cartDTO.gAmount}</td>

@@ -32,5 +32,16 @@
 	 
 	 </select>
 	 
+	 <select id="search" resultType="GoodsDTO" parameterType="string">
+	 		 	  select gCode, 
+	 	        gCategory,
+	 	        gName,
+	 	        gContent,
+	 	        gPrice,
+	 	        gImage
+	 	  from goods
+	 	  where gName like CONCAT('%', #{gName}, '%')
+	 </select>
+	 
 	 
 </mapper>
