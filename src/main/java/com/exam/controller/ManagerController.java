@@ -50,7 +50,6 @@ public class ManagerController {
         
         try {
         	
-        	
             gImage.transferTo(new File(f.toString())); 
             
         } catch (IOException e) {
