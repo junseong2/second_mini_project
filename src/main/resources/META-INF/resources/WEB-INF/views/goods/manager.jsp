@@ -22,11 +22,8 @@
 			<div class="mb-3">
 				<label for="gCategory" class="form-label">카테고리</label> <select
 					id="gCategory" name="gCategory" class="form-select" required>
-					<option value="bottom">Bottom</option>
-					<option value="bowling">Bowling</option>
-					<option value="dress">Dress</option>
-					<option value="outer">Outer</option>
-					<option value="top">Top</option>
+					<option value="sojung">SOJUNG</option>
+					<option value="junseong">JUNSEONG</option>
 				</select>
 			</div>
 

@@ -35,7 +35,7 @@ public class ManagerController {
     public String manager() {
         return "manager";  
     }
-
+ 
 
     @PostMapping("/goodsRegister")
     public String registerGoods(@RequestParam String gCode,
