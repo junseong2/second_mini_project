@@ -29,8 +29,10 @@ public class GoodsController {
 		super();
 		this.goodsService = goodsService;
 		this.feedbackService = feedbackService;
+
 	}     
  
+
 //	@GetMapping("/goodsRetrieve") //껍데기 retreive.jsp 
 //	public String goodsRetrieve(@RequestParam(required=false) String gCode, Model m) {
 //		상품 목록에서 자세히 보기로 요청한 경우에 gCode 를 세션에 저장

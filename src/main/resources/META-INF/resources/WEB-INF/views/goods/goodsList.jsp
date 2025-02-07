@@ -2,14 +2,16 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c"  uri="jakarta.tags.core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 <div class="container">
   <div class="row">
   ${dto.gImage }
   <c:forEach var="dto" items="${goodsList}">
     <div class="col border border-dark m-4 w-80">
+
       <a href="goodsRetrieve?gCode=${dto.gCode}">
+
 		<img src="images/items/${dto.gImage}" width="200">
 	  </a>
        <div class="mt-4 fs-6">${dto.gName}</div>
@@ -20,3 +22,4 @@
  
   </div>
 </div>
+
