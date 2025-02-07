@@ -8,7 +8,7 @@
   <div class="row">
   ${dto.gImage }
   <c:forEach var="dto" items="${goodsList}">
-    <div class="col border border-dark m-4 w-80">
+    <div class="col m-4 w-80" style="border-radius:15px; border: 2px solid black; ">
 
       <a href="goodsRetrieve?gCode=${dto.gCode}">
 
