@@ -17,4 +17,8 @@ public interface MemberMapper {
 	
 	public String findid(MemberDTO dto);
 	public String findpw(MemberDTO dto);
+	
+	public int update(MemberDTO dto);
+	public int withdraw(String userid);
+
 }

@@ -27,6 +27,11 @@ public class LoginController {
 		return "loginForm";
 	} 
 	
+	@PostMapping("/loginForm") //껍데기 main.jsp 
+	public String loginForm2() {
+		return "loginForm";
+	} 
+	
 	@PostMapping("/login")
 	public String login(@RequestParam Map<String, String> map, Model m) {
 		MemberDTO dto = memberService.login(map);
