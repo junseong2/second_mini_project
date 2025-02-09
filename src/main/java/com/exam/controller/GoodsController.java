@@ -59,7 +59,7 @@ public class GoodsController {
 		mav.setViewName("goodsRetrieve");
 		  
 		List<FeedbackDTO> list = feedbackService.pullFeedback(gCode);
-		mav.addObject("feedback", list);
+ 		mav.addObject("feedback", list);
 		    
 		return mav;  
 	}   
