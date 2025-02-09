@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.exam.dto.GoodsDTO;
@@ -35,10 +36,10 @@ public class MemberController {
    
 	//회원가입 화면 
 	@GetMapping("/signup")
-	public String signup() {
+	public String signup() {   
 		return "memberForm"; 
-	} 
-	
+	}  	
+	 
 	//id 중복 체크하기
 	@GetMapping("/idCheck")
 	@ResponseBody
@@ -161,5 +162,43 @@ public class MemberController {
 		
 		return "findpwSuccess"; 
 	}
+	
+//	@GetMapping("/update")
+//	public String update() { 
+//		return "mypage"; 
+//	} 
+	
+	@PostMapping("/update")
+	public String update(@ModelAttribute MemberDTO dto, RedirectAttributes redirectAttributes) {
+	    int n = memberService.update(dto);
+	    redirectAttributes.addFlashAttribute("message", "업데이트가 정상적으로 완료되었습니다.");
+	    return "redirect:/main";
+	}
+	
+//	@GetMapping("/update")
+//	public String update() {   
+//		return "mypage"; 
+//	} 
+	
+	@PostMapping("/withdraw")
+	public String withdraw(@ModelAttribute("login") MemberDTO loginMember, 
+	                       RedirectAttributes redirectAttributes,
+	                       SessionStatus sessionStatus) {
+
+	    String userid = loginMember.getUserid(); 
+ 
+	    int n = memberService.withdraw(userid);
+	    if (n > 0) {
+	        sessionStatus.setComplete();
+	        redirectAttributes.addFlashAttribute("message", "회원 탈퇴가 정상적으로 완료되었습니다.");
+	    } else {
+	        redirectAttributes.addFlashAttribute("error", "회원 탈퇴에 실패했습니다.");
+	    }
+
+	    return "redirect:/main";
+	}
+
+
+	
 	
 }

@@ -1,8 +1,11 @@
 package com.exam.controller;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+
+import javax.imageio.ImageIO;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +17,7 @@ import com.exam.dto.GoodsDTO;
 import com.exam.service.GoodsService;
 
 import jakarta.validation.Path;
+import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
 public class ManagerController {
@@ -46,7 +50,9 @@ public class ManagerController {
         File f = new File("C://upload", imageFileName);
         
         try {
-            gImage.transferTo(new File(f.toString()));
+        	
+            gImage.transferTo(new File(f.toString())); 
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
