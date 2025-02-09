@@ -54,5 +54,18 @@
 	 	where userid=#{userid}
 	 </select>
 	 
+	 <update id="update" parameterType="MemberDTO" >
+    update member
+    set post = #{post},addr1 = #{addr1},addr2 = #{addr2},phone1 = #{phone1}, phone2 = #{phone2},
+        phone3 = #{phone3},email1 = #{email1},email2 = #{email2}
+    where userid = #{userid}
+    </update>
+    
+    <delete id="withdraw" parameterType="String">
+    	delete from member
+    	where userid = #{userid}
+    </delete>
+	 
+	 
 	 
 </mapper>

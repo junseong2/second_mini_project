@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.exam.dto.GoodsDTO;
 import com.exam.dto.MemberDTO;
@@ -44,6 +45,16 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public String findpw(MemberDTO dto) {
 		return mapper.findpw(dto);
+	}
+	@Override
+	@Transactional
+	public int update(MemberDTO dto) {
+		return mapper.update(dto);
+	}
+	@Override
+	@Transactional
+	public int withdraw(String userid) {
+		return mapper.withdraw(userid);
 	}
 
 }
