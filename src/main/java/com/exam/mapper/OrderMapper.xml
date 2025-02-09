@@ -27,7 +27,7 @@
     
     <select id="orderConfirm" resultMap="userResultMap" parameterType="int">
        select *
-      from cart join goods on cart.gCode = goods.gCode
+      from cart join leegoods on cart.gCode = leegoods.gCode
       where num = #{num}
     </select>
     
