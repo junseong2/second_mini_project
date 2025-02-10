@@ -23,7 +23,10 @@
 				<div class="mb-3" style="width: 400px;">
 					<label for="gCategory" class="form-label">카테고리</label> 
 					<select id="gCategory" name="gCategory" class="form-select" required>
-						<option value="sojung">SOJUNG</option>
+						<option value="bowling_ball">[BOWLING] BALL</option>
+						<option value="bowling_tshirt">[BOWLING] TSHIRT</option>
+						<option value="bowling_bag">[BOWLING] BAG</option>
+						<option value="bowling_guard">[BOWLING] GUARD</option>
 						<option value="junseong">JUNSEONG</option>
 					</select>
 				</div>

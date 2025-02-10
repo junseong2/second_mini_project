@@ -29,7 +29,7 @@ public class MainController {
 		List<GoodsDTO> list = service.goodsList(gCategory);
 		return list; 
 	}               
-	
+	 
 	@PostMapping("/search")
 	@ModelAttribute("goodsList") 
 	public List<GoodsDTO> search(@RequestParam(required = false, defaultValue = "") String search) {
