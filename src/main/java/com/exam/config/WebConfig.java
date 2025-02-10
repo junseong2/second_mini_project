@@ -19,12 +19,12 @@ public class WebConfig implements WebMvcConfigurer {
    @Autowired
    MyHandlerInterceptor xxx;
    
-   @Override
+   @Override    
    public void addInterceptors(InterceptorRegistry registry) {
       
       //registry.addInterceptor(xxx);
       // /cart* 로 퉁쳐도됨
-      registry.addInterceptor(xxx).addPathPatterns("/logout","/mypage","/cartAdd","/cartList","/cartDelete","/cartDeleteAll","/orderConfirm");
+      registry.addInterceptor(xxx).addPathPatterns("/logout","/mypage","/cartAdd","/cartList","/cartDelete","/cartDeleteAll","/orderConfirm","/manager");
       
    }
    
