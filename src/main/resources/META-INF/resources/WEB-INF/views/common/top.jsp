@@ -6,20 +6,22 @@
 <header class="border-bottom border-light border-5">
 <script>
 $(document).ready(function() {
-
-	$("#managerLink").on("click", function(event) {
-	    event.preventDefault();  // 링크 클릭 시 페이지 이동을 막음
-	    
-	    var password = prompt("비밀번호를 입력하세요:");
-	    if (password == 1234) {
-	        location.href = "/minipj2/manager";  // 경로를 수정
-	    } else {
-	        alert("다시 비밀번호를 입력하세요.");
-	    }
-	});
+    // Manager 링크 클릭 시 비밀번호 확인
+    $("#managerLink").on("click", function(event) {
+        event.preventDefault();  // 링크 클릭 시 페이지 이동을 막음
+        
+        var password = prompt("비밀번호를 입력하세요:");
+        if (password == '1234') {  // 비밀번호 확인
+            location.href = "/minipj2/manager";  // 비밀번호가 맞으면 페이지로 이동
+        } else {
+            alert("다시 비밀번호를 입력하세요.");
+        }
+    });
 
 });
-//end ready
+
+
+
 </script>
 	<div class="container">
 
