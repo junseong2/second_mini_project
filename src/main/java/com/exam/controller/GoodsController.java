@@ -29,7 +29,7 @@ public class GoodsController {
 		this.goodsService = goodsService;
 		this.feedbackService = feedbackService;
  
-	}     
+	}        
  
 
 //	@GetMapping("/goodsRetrieve") //껍데기 retreive.jsp 
