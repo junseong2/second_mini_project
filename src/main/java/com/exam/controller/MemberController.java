@@ -1,7 +1,12 @@
 package com.exam.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -25,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Validated
-@SessionAttributes("login")
+//@SessionAttributes("login")
 @Slf4j
 public class MemberController {
 	
@@ -80,11 +85,15 @@ public class MemberController {
 		//유효성 실패하면 ConstraintViolationException 예외발생
 		//따라서 이 예외를 처리하는 @ControllerAdvice 빈을 만들어야 함
 		//com.exam.exception 내 GlobalExceptionHandler.java
+
+		//비밀번호 암호화
+		String encodedPW = new BCryptPasswordEncoder().encode(passwd); 
 	
 		//유효성 성공한 경우
-		MemberDTO dto = new MemberDTO(userid, passwd, username, post,
+		MemberDTO dto = new MemberDTO(userid, encodedPW, username, post,
 			addr1, addr2, phone1, phone2, phone3, email1, email2);
-		    
+
+		
 		int n = memberService.memberAdd(dto); 
 		 
 		//회원가입 완료 메시지를 전달
@@ -96,8 +105,12 @@ public class MemberController {
 	//mypage
 	@GetMapping("/mypage")
 	public String mypage(Model m) { 
-		MemberDTO dto = (MemberDTO)m.getAttribute("login");
+		//MemberDTO dto = (MemberDTO)m.getAttribute("login");
 		
+		//AuthProvider 에서 저장시킨 Authentication 정보가 필요함
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		MemberDTO dto = (MemberDTO)auth.getPrincipal();
+
 		String userid = dto.getUserid();
 		MemberDTO mypageDTO = memberService.mypage(userid);
 		m.addAttribute("login",mypageDTO);
@@ -138,29 +151,43 @@ public class MemberController {
 		return "findidSuccess";
 	}
 	
-	@GetMapping("/findpw")
+	@GetMapping("/updatepw")
 	public String findpw() { 
-		return "findpw"; 
+		return "updatepw"; 
 	} 
 	
-	@PostMapping("/findpw")
+	@PostMapping("/updatepw")
 	public String findpw(@NotBlank(message="아이디를 입력하세요.")
-						 @RequestParam String userid, Model m) {
+						 @RequestParam String userid, 
+						 @NotBlank(message="새로운 비밀번호를 입력하세요.")
+						 @RequestParam String passwd,Model m) {
 		
 		MemberDTO dto = new MemberDTO();
 		dto.setUserid(userid);
 		
-		String passwd = memberService.findpw(dto);
+		//DB에서 아이디에 해당하는 회원 조회
+		MemberDTO existMember = memberService.findByUserid(userid);
 		log.info("userid:{}",userid); 
 		
-		if(passwd==null) {
+		if(existMember==null) {
 			m.addAttribute("errorMessage","일치하는 회원 정보가 없습니다.");
-			return "findpw";
+			return "updatepw";
 		}
 		
-		m.addAttribute("passwd",passwd);
+		//새 비밀번호를 암호화
+		//비밀번호 암호화
+		String encodedPW = new BCryptPasswordEncoder().encode(passwd); 
 		
-		return "findpwSuccess"; 
+		HashMap<String, String> map = new HashMap();
+		map.put("userid",userid);
+		map.put("passwd", encodedPW);
+		
+		//암호화된 비밀번호를 DB에 업데이트하기
+		int n = memberService.newPassword(map); 
+		
+		
+		
+		return "updatepwSuccess"; 
 	}
 	
 //	@GetMapping("/update")
