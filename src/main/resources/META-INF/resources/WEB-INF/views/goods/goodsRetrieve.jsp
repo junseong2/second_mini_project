@@ -118,9 +118,20 @@
 		                            <option  value="BLACK">BLACK</option>
 		                        </select>
 		                    </c:if>
+		                    
+		                    <!-- 상품 gCode가 BALL을 포함한 경우 -->
+		                    <c:if test="${fn:contains(goodsRetrieve.gCode, 'BASKETBAG')}">
+		                        <!-- 사이즈와 색상 선택을 비활성화 -->
+		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;">
+		                            <option selected value="기본">기본</option>
+		                        </select>
+		                        <select class="select_change" name="gColor" id="gColor" style="font-size: 12px;">
+		                            <option selected value="기본">기본</option>
+		                        </select>
+		                    </c:if>
 		
 		                    <!-- 상품 gCode가 ball, tshirt를 포함하지 않은 경우 -->
-		                    <c:if test="${!fn:contains(goodsRetrieve.gCode, 'BALL') && !fn:contains(goodsRetrieve.gCode, 'TSHIRT') && !fn:contains(goodsRetrieve.gCode, 'BOWLBAG')}">
+		                    <c:if test="${!fn:contains(goodsRetrieve.gCode, 'BALL') && !fn:contains(goodsRetrieve.gCode, 'TSHIRT') && !fn:contains(goodsRetrieve.gCode, 'BOWLBAG') && !fn:contains(goodsRetrieve.gCode, 'BASKETBAG')}">
 		                        <!-- 사이즈와 색상 선택 활성화 -->
 		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;" required>
 		                            <option value="" disabled selected>사이즈선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
@@ -130,11 +141,9 @@
 		                        </select>
 		                        <select class="select_change" name="gColor" id="gColor" style="font-size: 12px;" required>
 		                            <option value="" disabled selected>색상선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
-		                            <option value="navy">navy</option>
-		                            <option value="black">black</option>
-		                            <option value="ivory">ivory</option>
-		                            <option value="white">white</option>
-		                            <option value="gray">gray</option>
+		                            <option value="BLACK">BLACK</option>
+		                            <option value="RED">RED</option>
+		                            <option value="BLUE">BLUE</option>
 		                        </select>
 		                    </c:if>
 		                </h6>
