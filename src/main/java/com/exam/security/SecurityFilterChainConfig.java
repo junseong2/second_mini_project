@@ -19,7 +19,7 @@ public class SecurityFilterChainConfig {
 		 //1-2. 요청 맵핑값 허용
 		 //home 과 signup 요청을 하면 인증하지 않아도 허용해주겠다는 뜻
 		 http.authorizeHttpRequests((auth)->
-		 							auth.requestMatchers("/main","/signup","/idCheck","/login","/goodsRetrieve","/WEB-INF/**", "/manager","/search","/goodsRegister","/findid","/findpw").permitAll()
+		 							auth.requestMatchers("/main","/signup","/idCheck","/login","/goodsRetrieve","/WEB-INF/**", "/manager","/search","/goodsRegister","/findid","/updatepw").permitAll()
 		 							//	.requestMatchers("/**").permitAll()
 		 								//home과 signup을 제외한 나머지 요청은
 		 								.anyRequest()

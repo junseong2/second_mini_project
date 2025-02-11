@@ -36,6 +36,7 @@
 		<!-- 로그인된 경우 화면 -->
 
 		<sec:authorize access="isAuthenticated()">
+		<sec:authentication property="principal.username" var="username"/>
 			<div class="row">
 				<nav class="navbar navbar-expand-lg">
 					<div class="collapse navbar-collapse">
@@ -47,7 +48,7 @@
 						</ul>
 					</div>
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link">안녕하세요. <span style="color: blue;">${login.username}</span>님</a></li>
+						<li class="nav-item"><a class="nav-link">안녕하세요. <span style="color: blue;">${username}</span>님</a></li>
 						<li class="nav-item"><a class="nav-link" href="logout">Logout</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="mypage">mypage</a>

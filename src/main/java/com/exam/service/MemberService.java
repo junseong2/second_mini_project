@@ -23,4 +23,5 @@ public interface MemberService {
 	public int withdraw(String userid);
 	
 	public MemberDTO findByUserid(String userid);
+	public int newPassword(HashMap<String, String> map);
 }

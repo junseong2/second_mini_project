@@ -1,6 +1,8 @@
 package com.exam.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -149,29 +151,43 @@ public class MemberController {
 		return "findidSuccess";
 	}
 	
-	@GetMapping("/findpw")
+	@GetMapping("/updatepw")
 	public String findpw() { 
-		return "findpw"; 
+		return "updatepw"; 
 	} 
 	
-	@PostMapping("/findpw")
+	@PostMapping("/updatepw")
 	public String findpw(@NotBlank(message="아이디를 입력하세요.")
-						 @RequestParam String userid, Model m) {
+						 @RequestParam String userid, 
+						 @NotBlank(message="새로운 비밀번호를 입력하세요.")
+						 @RequestParam String passwd,Model m) {
 		
 		MemberDTO dto = new MemberDTO();
 		dto.setUserid(userid);
 		
-		String passwd = memberService.findpw(dto);
+		//DB에서 아이디에 해당하는 회원 조회
+		MemberDTO existMember = memberService.findByUserid(userid);
 		log.info("userid:{}",userid); 
 		
-		if(passwd==null) {
+		if(existMember==null) {
 			m.addAttribute("errorMessage","일치하는 회원 정보가 없습니다.");
-			return "findpw";
+			return "updatepw";
 		}
 		
-		m.addAttribute("passwd",passwd);
+		//새 비밀번호를 암호화
+		//비밀번호 암호화
+		String encodedPW = new BCryptPasswordEncoder().encode(passwd); 
 		
-		return "findpwSuccess"; 
+		HashMap<String, String> map = new HashMap();
+		map.put("userid",userid);
+		map.put("passwd", encodedPW);
+		
+		//암호화된 비밀번호를 DB에 업데이트하기
+		int n = memberService.newPassword(map); 
+		
+		
+		
+		return "updatepwSuccess"; 
 	}
 	
 //	@GetMapping("/update")

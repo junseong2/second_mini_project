@@ -170,18 +170,19 @@
 
 			<!-- 로그인 상태 체크 -->
 			<sec:authorize access="isAuthenticated()">
+			<sec:authentication property="principal.username" var="username"/>
 			    <!-- 로그인된 사용자만 후기 작성 폼을 볼 수 있도록 조건부로 표시 -->
 			    <form id="feedbackForm" action="writeFeedback" method="post" class="column g-3 m-4" style="width:100%; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; padding: 15px; margin-bottom: 20px">
 			        <input type="hidden" name="gCode" value="${goodsRetrieve.gCode}">
-			        <input type="hidden" name="userid" value="${login.userid}">
+			        <input type="hidden" name="userid" value="${username}">
 			        <h5 style="font-size: 14px; color: green; padding: 10px; margin-bottom:15px; font-size:1.2rem; font-weight:700">후기 작성</h5>
 			
 			        <!-- 사용자 이름과 후기 입력란을 가로로 배치 -->
 			        <div style="display: flex; align-items: center; margin-bottom: 15px;">
 			            <div style="margin-right: 10px; font-size: 14px;">
-			                <strong>${login.userid}</strong> 님 :
+			                <strong>${username}</strong> 님 :
 			            </div>
-			            <input type="text" name="gContext" placeholder="후기를 입력하세요." style="width: 70%; padding: 8px; font-size: 14px; margin-right: 10px;">
+			            <input autocomplete="off" type="text" name="gContext" placeholder="후기를 입력하세요." style="width: 70%; padding: 8px; font-size: 14px; margin-right: 10px;">
 			            <button type="submit" style="padding: 6px 12px; font-size: 14px;" class="btn btn-success">작성</button>
 			        </div>
 			    </form>
