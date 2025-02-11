@@ -28,7 +28,7 @@
 						<option value="bowling_bag">[BOWLING] BAG</option>
 						<option value="bowling_guard">[BOWLING] GUARD</option>
 						<option value="basketball_ball">[BASKETBALL] BALL</option>
-						<option value="basketball_tshirt">[BASKETBALL] TSHIRT</option>
+						<option value="basketball_tshirt">[BASKETBALL] UNIFORM</option>
 						<option value="basketball_bag">[BASKETBALL] BAG</option>
 					</select>
 				</div>
