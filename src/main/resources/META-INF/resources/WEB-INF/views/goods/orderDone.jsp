@@ -1,81 +1,49 @@
-<!-- order/orderDone.jsp -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<div class="container">    
-<table>
-	<tr>
-		<td height="30">
-	</tr>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
-	<tr>
-		<td><b>주문완료</b></td>
-	</tr>
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center text-primary mb-4">주문 완료</h2>
+        
+        <div class="alert alert-success text-center">
+            <strong>주문해주셔서 감사합니다!</strong>
+            <br>
+            <span class="text-muted">${oDTO.orderName} 님의 주문이 안전하게 처리되었습니다.</span>
+        </div>
 
-	<tr>
-		<td height="30">
-	</tr>
+        <div class="border p-3 rounded">
+            <h4 class="mb-3 text-secondary">📦 상품 및 배송정보</h4>
+            
+            <table class="table table-bordered text-center align-middle">
+                <tbody>
+                    <tr>
+                        <th class="bg-light">받으시는 분</th>
+                        <td>${oDTO.orderName}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-light">주소</th>
+                        <td>(${oDTO.post}) <br> ${oDTO.addr1} <br> ${oDTO.addr2}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-light">휴대전화</th>
+                        <td>${oDTO.phone}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-light">상품코드</th>
+                        <td>${cDTO.gCode}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-light">수량</th>
+                        <td>${cDTO.gAmount}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-	<tr>
-		<td align="center"><b>주문해주셔서 감사합니다.</b></td>
-	</tr>
-
-	<tr>
-		<td height="7">
-	</tr>
-
-	<tr>
-		<td class="td_default" align="center"><b>${oDTO.orderName }</b> 님의 주문이
-			안전하게 처리되었습니다.</td>
-	</tr>
-
-	<tr>
-		<td height="40">
-	</tr>
-
-	<tr>
-		<td class="td_default"><b>상품 및 배송정보</b>
-		</td>
-	</tr>
-
-	<tr>
-		<td height="15">
-	</tr>
-
-	<tr>
-		<td>
-			<table width="100%" border="1" style="border-collapse: collapse">
-				<tr>
-					<td class="td_default" width="150" height="35"> 받으시는 분</td>
-					<td class="td_default" height="35">${oDTO.orderName }</td>
-				</tr>
-				<tr>
-					<td class="td_default" height="35"> 주소</td>
-					<td class="td_default" height="35"> (${oDTO.post })<br>
-						${oDTO.addr1 } <br> ${oDTO.addr2 }
-					</td>
-				</tr>
-				
-				<tr>
-					<td class="td_default" height="35"> 휴대전화</td>
-					<td class="td_default" height="35"> ${oDTO.phone }</td>
-				</tr>
-				<tr>
-					<td class="td_default" height="35"> 상품코드</td>
-					<td class="td_default" height="35"> ${cDTO.gCode }</td>
-				</tr>
-				
-				<tr>
-					<td class="td_default" height="35"> 수량</td>
-					<td class="td_default" height="35"> ${cDTO.gAmount }</td>
-				</tr>
-			</table>
-	</tr>
-
-
-	<tr>
-		<td height="20">
-	</tr>
-
-</table>
+        <div class="text-center mt-4">
+            <a href="main" class="btn btn-primary">홈으로 이동</a>
+        </div>
+    </div>
 </div>

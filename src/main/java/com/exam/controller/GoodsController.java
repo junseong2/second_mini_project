@@ -33,7 +33,7 @@ public class GoodsController {
 		this.goodsService = goodsService;
 		this.feedbackService = feedbackService;
  
-	}        
+	}          
  
 
 //	@GetMapping("/goodsRetrieve") //껍데기 retreive.jsp 
@@ -52,7 +52,7 @@ public class GoodsController {
 	    @RequestParam(required = false, defaultValue = "") String gCategory,
 	    Model model) {
 
-  	    // 카테고리별로 상품을 가져오기
+      	    // 카테고리별로 상품을 가져오기
 	    List<GoodsDTO> goodsList = goodsService.getAllGoodsByCategory(gCategory);
 
 	    // 정렬 처리
