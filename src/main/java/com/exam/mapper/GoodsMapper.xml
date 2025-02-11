@@ -15,7 +15,8 @@
 	 	        gPrice,
 	 	        gImage
 	 	  from leegoods
-	 	  where gCategory = #{gCategory}
+	 	  <!-- where gCategory = #{gCategory} -->
+	 	  where gCategory like CONCAT(#{gCategory}, '%')
 	 
 	 </select>
 	 
