@@ -24,7 +24,7 @@ public class WebConfig implements WebMvcConfigurer {
       
       //registry.addInterceptor(xxx);
       // /cart* 로 퉁쳐도됨
-      registry.addInterceptor(xxx).addPathPatterns("/logout","/mypage","/cartAdd","/cartList","/cartDelete","/cartDeleteAll","/orderConfirm");
+      registry.addInterceptor(xxx).addPathPatterns("/logout","/mypage","/cartAdd","/cartList","/cartDelete","/cartDeleteAll","/orderConfirm","/buyGoods");
       
    }
    
