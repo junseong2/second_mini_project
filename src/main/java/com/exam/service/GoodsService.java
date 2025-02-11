@@ -14,5 +14,8 @@ public interface GoodsService {
 
 	public int goodsAdd(GoodsDTO dto);
   public List<GoodsDTO> search(String gName);
+	public List<GoodsDTO> getAllGoodsByCategory(String gCategory);
+
+
 
 }
