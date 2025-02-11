@@ -29,11 +29,11 @@
 </script>
 <div class="container">
 	<h2>관리자 로그인</h2>
-    <form class="row g-3 m-4">
+    <form class="row g-3 m-4" autocomplete="off">
 		  <div class="row mb-3">
 		    <label for="managerConfirm" class="col-sm-2 col-form-label">관리자 암호</label>
 		    <div class="col-auto">
-		      <input type="text" class="form-control" id="managerConfirm" name="managerConfirm">
+		      <input type="password" class="form-control" id="managerConfirm" name="managerConfirm">
 		    </div>
 		  </div>
 
