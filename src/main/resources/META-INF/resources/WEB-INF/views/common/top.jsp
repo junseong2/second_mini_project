@@ -4,25 +4,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <header class="border-bottom border-light border-5">
-<script>
-$(document).ready(function() {
-    // Manager 링크 클릭 시 비밀번호 확인
-    $("#managerLink").on("click", function(event) {
-        event.preventDefault();  // 링크 클릭 시 페이지 이동을 막음
-        
-        var password = prompt("비밀번호를 입력하세요:");
-        if (password == '1234') {  // 비밀번호 확인
-            location.href = "/minipj2/manager";  // 비밀번호가 맞으면 페이지로 이동
-        } else {
-            alert("다시 비밀번호를 입력하세요.");
-        }
-    });
 
-});
-
-
-
-</script>
 	<div class="container">
 
 
@@ -35,6 +17,8 @@ $(document).ready(function() {
 						<ul class="navbar-nav">
 							<li class="nav-item"><a class="nav-link" href="main">Home</a>
 							</li>
+							<li class="nav-item"><a class="nav-link" href="manager"
+							id="managerLink">Manager</a></li>
 						</ul>
 					</div>
 					<ul class="navbar-nav">
