@@ -6,6 +6,8 @@
 <script src="webjars/jquery/3.7.1/jquery.min.js"></script>
 <%@ taglib prefix="c"  uri="jakarta.tags.core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<!-- taglib 추가 -->
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <script>
   $(document).ready(function(){
@@ -167,7 +169,7 @@
 			<!-- 후기 작성 폼 -->
 
 			<!-- 로그인 상태 체크 -->
-			<c:if test="${not empty login}">
+			<sec:authorize access="isAuthenticated()">
 			    <!-- 로그인된 사용자만 후기 작성 폼을 볼 수 있도록 조건부로 표시 -->
 			    <form id="feedbackForm" action="writeFeedback" method="post" class="column g-3 m-4" style="width:100%; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; padding: 15px; margin-bottom: 20px">
 			        <input type="hidden" name="gCode" value="${goodsRetrieve.gCode}">
@@ -183,10 +185,10 @@
 			            <button type="submit" style="padding: 6px 12px; font-size: 14px;" class="btn btn-success">작성</button>
 			        </div>
 			    </form>
-			</c:if>
+			</sec:authorize>
 
 			<!-- 로그인 안된 경우 -->
-			<c:if test="${empty login}">
+			<sec:authorize access="isAnonymous()"> 
 			    <form id="feedbackForm" action="writeFeedback" method="post" class="column g-3 m-4" style="width:100%; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; padding: 15px; margin-bottom: 20px">
 			        <input type="hidden" name="gCode" value="${goodsRetrieve.gCode}">
 			        <input type="hidden" name="userid" value="${login.userid}">
@@ -198,7 +200,7 @@
 			            <button type="submit" style="padding: 6px 12px; font-size: 14px;" class="btn btn-success" disabled>작성</button>
 			        </div>
 			    </form>
-			</c:if>
+			</sec:authorize>
 
 			<!-- 후기 목록 -->
 

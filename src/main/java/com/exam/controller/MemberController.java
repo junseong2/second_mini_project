@@ -2,6 +2,9 @@ package com.exam.controller;
 
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -25,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Validated
-@SessionAttributes("login")
+//@SessionAttributes("login")
 @Slf4j
 public class MemberController {
 	
@@ -80,11 +83,15 @@ public class MemberController {
 		//유효성 실패하면 ConstraintViolationException 예외발생
 		//따라서 이 예외를 처리하는 @ControllerAdvice 빈을 만들어야 함
 		//com.exam.exception 내 GlobalExceptionHandler.java
+
+		//비밀번호 암호화
+		String encodedPW = new BCryptPasswordEncoder().encode(passwd); 
 	
 		//유효성 성공한 경우
-		MemberDTO dto = new MemberDTO(userid, passwd, username, post,
+		MemberDTO dto = new MemberDTO(userid, encodedPW, username, post,
 			addr1, addr2, phone1, phone2, phone3, email1, email2);
-		    
+
+		
 		int n = memberService.memberAdd(dto); 
 		 
 		//회원가입 완료 메시지를 전달
@@ -96,8 +103,12 @@ public class MemberController {
 	//mypage
 	@GetMapping("/mypage")
 	public String mypage(Model m) { 
-		MemberDTO dto = (MemberDTO)m.getAttribute("login");
+		//MemberDTO dto = (MemberDTO)m.getAttribute("login");
 		
+		//AuthProvider 에서 저장시킨 Authentication 정보가 필요함
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		MemberDTO dto = (MemberDTO)auth.getPrincipal();
+
 		String userid = dto.getUserid();
 		MemberDTO mypageDTO = memberService.mypage(userid);
 		m.addAttribute("login",mypageDTO);
