@@ -1,6 +1,8 @@
 package com.exam.controller;
         
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +42,39 @@ public class GoodsController {
 //		GoodsDTO dto = goodsService.goodsRetrieve(gCode);
 //		m.addAttribute("goodsRetrieve",dto);
 //		return "goodsRetrieve";
-//	}         
+//	}   
+	
+	@GetMapping("/goodsList")
+	public String getGoodsList(
+	    @RequestParam(required = false) String sort,
+	    @RequestParam(required = false, defaultValue = "") String gCategory,
+	    Model model) {
+
+  	    // 카테고리별로 상품을 가져오기
+	    List<GoodsDTO> goodsList = goodsService.getAllGoodsByCategory(gCategory);
+
+	    // 정렬 처리
+	    if ("price_desc".equals(sort)) {
+	        goodsList.sort(Comparator.comparing(GoodsDTO::getgPrice).reversed());
+	    } else if ("price_asc".equals(sort)) {
+	        goodsList.sort(Comparator.comparing(GoodsDTO::getgPrice));
+	    } else if ("code_asc".equals(sort)) {
+	        goodsList.sort(Comparator.comparing(GoodsDTO::getgCode));
+	    }
+
+	    // 모델에 데이터 추가
+	    model.addAttribute("goodsList", goodsList);
+	    model.addAttribute("sort", sort);
+	    model.addAttribute("gCategory", gCategory);
+
+	    return "main";
+	}
+
+           
+      
+
+	
+	
 	       
 	@GetMapping("/goodsRetrieve")
 	public ModelAndView goodsRetrieve(@RequestParam(required=false) String gCode, Model m,RedirectAttributes redirectAttributes) {

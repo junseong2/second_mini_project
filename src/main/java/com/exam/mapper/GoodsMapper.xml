@@ -3,55 +3,67 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.exam.mapper.GoodsMapper">
-   
-	
-	 
-	 <select id="goodsList" resultType="GoodsDTO" parameterType="string">
-	 	 
-	 	  select gCode, 
-	 	        gCategory,
-	 	        gName,
-	 	        gContent,
-	 	        gPrice,
-	 	        gImage
-	 	  from leegoods
-	 	  <!-- where gCategory = #{gCategory} -->
-	 	  where gCategory like CONCAT(#{gCategory}, '%')
-	 
-	 </select>
-	 
-	  <select id="goodsRetrieve" resultType="GoodsDTO" parameterType="string">
-	 	 
-	 	  select gCode, 
-	 	        gCategory,
-	 	        gName,
-	 	        gContent,
-	 	        gPrice,
-	 	        gImage
-	 	  from leegoods
-	 	  where gCode = #{gCode}
-	 
-	 </select>
-	 
 
-	 <insert id="goodsAdd" parameterType="GoodsDTO" >
-	 	insert into leegoods (gCode,gCategory,gName,gContent,
-	                       gPrice,gImage)
-	   values ( #{gCode},#{gCategory},#{gName},#{gContent},
-	            #{gPrice},#{gImage} )  
-	 </insert>
 
-<select id="search" resultType="GoodsDTO" parameterType="string">
-	 		 	  select gCode, 
-	 	        gCategory,
-	 	        gName,
-	 	        gContent,
-	 	        gPrice,
-	 	        gImage
-	 	  from leegoods
-	 	  where gName like CONCAT('%', #{gName}, '%')
-	 </select>
 
-	 
-	 
+
+<select id="getAllGoodsByCategory" resultType="GoodsDTO">
+    SELECT * FROM leegoods
+    where gCategory like CONCAT(#{gCategory}, '%')
+</select>
+
+
+
+
+
+	<select id="goodsList" resultType="GoodsDTO"
+		parameterType="string">
+
+		select gCode,
+		gCategory,
+		gName,
+		gContent,
+		gPrice,
+		gImage
+		from leegoods
+		<!-- where gCategory = #{gCategory} -->
+		where gCategory like CONCAT(#{gCategory}, '%')
+
+	</select>
+
+	<select id="goodsRetrieve" resultType="GoodsDTO"
+		parameterType="string">
+
+		select gCode,
+		gCategory,
+		gName,
+		gContent,
+		gPrice,
+		gImage
+		from leegoods
+		where gCode = #{gCode}
+
+	</select>
+
+
+	<insert id="goodsAdd" parameterType="GoodsDTO">
+		insert into leegoods (gCode,gCategory,gName,gContent,
+		gPrice,gImage)
+		values ( #{gCode},#{gCategory},#{gName},#{gContent},
+		#{gPrice},#{gImage} )
+	</insert>
+
+	<select id="search" resultType="GoodsDTO" parameterType="string">
+		select gCode,
+		gCategory,
+		gName,
+		gContent,
+		gPrice,
+		gImage
+		from leegoods
+		where gName like CONCAT('%', #{gName}, '%')
+	</select>
+
+
+
 </mapper>

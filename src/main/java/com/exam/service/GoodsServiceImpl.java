@@ -37,5 +37,15 @@ public class GoodsServiceImpl implements GoodsService{
   public List<GoodsDTO> search(String gName) {
 		return mapper.search(gName);
   }
+
+
+  @Override
+  public List<GoodsDTO> getAllGoodsByCategory(String gCategory) {
+      return mapper.getAllGoodsByCategory(gCategory);  // 카테고리별 상품 조회
+  }
+
+
+
+
  
 }
