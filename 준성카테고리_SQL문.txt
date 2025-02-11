@@ -1,0 +1,23 @@
+#basketball_ball
+insert into leegoods values ('BA_BALL01',	'basketball_ball', '[공] 	
+Wilson Nba Authentic Outdoor',	'윌슨 오센틱 아웃도어 농구공은 NBA의 진정한 느낌을 가져옵니다. ', '37790', 'BBALL01.gif');
+insert into leegoods values ('BA_BALL02',	'basketball_ball', '[공] 	
+야광농구공',	'빛이 굴절되는 농구공 입니다', '74400', 'BBALL02.gif');
+insert into leegoods values ('BA_BALL03',	'basketball_ball', '[공] 	
+윌슨 NBA DRV 프로 농구공',	'유명한 농구공 입니다', '43000', 'BBALL03.gif');
+insert into leegoods values ('BA_BALL04',	'basketball_ball', '[공] 나이키 볼러 농구공',	'유명한 나이키 농구공', '32000', 'BBALL04.gif');
+insert into leegoods values ('BA_BALL05',	'basketball_ball', '[공] 나이키 8패널 농구공',	'유명한 나이키 농구공2', '20000', 'BBALL05.gif');
+insert into leegoods values ('BA_BALL06',	'basketball_ball', '[공] 파랑 농구공',	'색이 예븐 농구공입니다', '90000', 'BBALL06.gif');
+
+#basketball_tshirt
+insert into leegoods values ('BTSHIRT01','basketball_tshirt', 'NBA 뉴욕 유니폼',	'명문 뉴욕 유니폼', '50000', 'BTSHIRT01.gif');
+insert into leegoods values ('BTSHIRT02','basketball_tshirt', 'NBA 필라델피아 유니폼',	'명문 필라델피아 유니폼', '50000', 'BTSHIRT02.gif');
+insert into leegoods values ('BTSHIRT03','basketball_tshirt', 'NBA 마이애미 유니폼',	'명문 마이애미 유니폼', '50000', 'BTSHIRT03.gif');
+insert into leegoods values ('BTSHIRT04','basketball_tshirt', 'NBA 골든스테이트 유니폼',	'명문 골든스테이트 유니폼', '50000', 'BTSHIRT04.gif');
+
+
+#basketball_bag
+insert into leegoods values ('BBAG01','basketball_bag', '나이키 블랙 가방',	'수납공간이 넓습니다', '120000', 'BBAG01.gif');
+insert into leegoods values ('BBAG02','basketball_bag', '윌슨 캐리백 6구',	'수납공간이 더 넓습니다', '110000', 'BBAG02.gif');
+insert into leegoods values ('BBAG03','basketball_bag', '윌슨 싱글볼 주머니',	'1개만 들어가요', '22000', 'BBAG03.gif');
+insert into leegoods values ('BBAG04','basketball_bag', '농구가방 케이스',	'1개만 들어가요', '33000', 'BBAG04.gif');
