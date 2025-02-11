@@ -27,6 +27,7 @@
 						<option value="bowling_tshirt">[BOWLING] TSHIRT</option>
 						<option value="bowling_bag">[BOWLING] BAG</option>
 						<option value="bowling_guard">[BOWLING] GUARD</option>
+						<option value="bowling_ball">[BASKETBALL] BALL</option>
 						<option value="junseong">JUNSEONG</option>
 					</select>
 				</div>

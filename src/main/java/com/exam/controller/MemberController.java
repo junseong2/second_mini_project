@@ -176,7 +176,7 @@ public class MemberController {
 	}
 	
 //	@GetMapping("/update")
-//	public String update() {   
+//	public String update() {             
 //		return "mypage"; 
 //	} 
 	
