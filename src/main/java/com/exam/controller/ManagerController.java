@@ -24,12 +24,11 @@ import net.coobird.thumbnailator.Thumbnails;
 public class ManagerController {
     
    GoodsService goodsService;
-   
-   
 
     public ManagerController(GoodsService goodsService) {
       this.goodsService = goodsService;
    }
+     
 
 
 //   @GetMapping("/manager")  
@@ -37,10 +36,18 @@ public class ManagerController {
 //        return "goods/managerConfirm";   
 //    }
    
-   @GetMapping("/manager") 
+   @GetMapping("/manager")  
    public String managerPage() {
        return "manager";     
+   }  
+   
+   // 로그인 처리 (POST)
+   @PostMapping("/manager")
+   public String managerLogin() {
+       return "managerSuccess";
    }
+    
+
 
 
     @PostMapping("/goodsRegister")
