@@ -52,6 +52,11 @@
 		  this.method="post"         // doPost
 	  });
 	  
+	  //취소 버튼 누르면 홈
+	  $("#reset").on("click",function(){
+		 window.location.href="/minipj2/main"; 
+	  });
+	  
 	  
   });//end ready
 </script>
@@ -155,7 +160,7 @@
 		  </div>
 		  <div class="col-12">
 		    <button type="submit" class="btn btn-primary">Sign in</button>
-		    <button type="reset" class="btn btn-primary">cancel</button>
+		    <button type="reset" class="btn btn-primary" id="reset">cancel</button>
 		  </div>
  </form>
 	

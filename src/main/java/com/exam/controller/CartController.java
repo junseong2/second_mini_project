@@ -24,7 +24,7 @@ import com.exam.service.MemberService;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
+ 
 @Controller
 @Validated
 @SessionAttributes("login")
@@ -35,12 +35,12 @@ public class CartController {
 	
 	public CartController(CartService cartService) {
 		this.cartService = cartService;
-	}
+	}  
 	
 
 
 
-	@GetMapping("/cartAdd")
+	@GetMapping("/cartAdd") 
 	public String cartAdd( @RequestParam String gCode,
 				           @RequestParam String gSize,
 			               @RequestParam  String gColor,
@@ -51,7 +51,7 @@ public class CartController {
 			                
 			               Model m
 			               ) {
-		
+		   
 		//실패
 		// @Validated 로 설정한 유효성체크는 에러발생시 ConstraintViolationException 예외가 발생되고
 		// @ControllerAdvice 지정한 GlobalExceptionHandler 생성.
