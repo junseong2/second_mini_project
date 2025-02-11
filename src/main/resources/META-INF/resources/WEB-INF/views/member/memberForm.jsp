@@ -65,9 +65,9 @@
 	<div>${errorMessage}</div>
     <form class="row g-3 m-4">
 		  <div class="row mb-3">
-		    <label for="userid" class="col-sm-2 col-form-label">*아이디</label>
+		    <label  for="userid" class="col-sm-2 col-form-label">*아이디</label>
 		    <div class="col-auto">
-		      <input type="text" class="form-control" id="userid" name="userid">
+		      <input autocomplete="off" type="text" class="form-control" id="userid" name="userid" required>
 		    </div>
 		    <div class="col-auto">
 			    <button type="button" class="btn btn-primary mb-3" id="idDupulicatedcheck">아이디중복</button>
@@ -79,7 +79,7 @@
 		 <div class="row mb-3">
 		    <label for="password" class="col-sm-2 col-form-label">*비밀번호</label>
 		    <div class="col-auto">
-		      <input type="password" class="form-control" name="passwd" id="passwd">
+		      <input type="password" class="form-control" name="passwd" id="passwd" required>
 		    </div>
 		  </div>
 		  <div class="row mb-3">
@@ -94,14 +94,14 @@
 		  <div class="row mb-3">
 		    <label for="username" class="col-sm-2 col-form-label">*이름</label>
 		    <div class="col-auto">
-		      <input type="text" class="form-control" name="username" id="username">
+		      <input autocomplete="off" type="text" class="form-control" name="username" id="username" required>
 		    </div>
 		  </div>
 		  <hr>
 		  <div class="row mb-3">
 		      <div class="col-auto">
 			    <label for="sample4_postcode" class="visually-hidden">post</label>
-			    <input type="text" name="post" class="form-control" id="sample4_postcode" placeholder="우편번호">
+			    <input autocomplete="off" type="text" name="post" class="form-control" id="sample4_postcode" placeholder="우편번호">
 			  </div>
 			  <div class="col-auto">
 			    <button type="button" class="btn btn-primary mb-3" onclick="sample4_execDaumPostcode()">우편번호 찾기</button>
@@ -110,11 +110,11 @@
 		   <div class="row mb-3">
 		      <div class="col-sm-5">
 			    <label for="sample4_roadAddress" class="visually-hidden">도로명주소</label>
-			    <input type="text"  name="addr1" class="form-control" id="sample4_roadAddress" placeholder="도로명주소">
+			    <input autocomplete="off" type="text"  name="addr1" class="form-control" id="sample4_roadAddress" placeholder="도로명주소">
 			  </div>
 			 <div class="col-sm-5">
 			    <label for="sample4_jibunAddress" class="visually-hidden">지번주소</label>
-			    <input type="text" name="addr2" class="form-control" id="sample4_jibunAddress" placeholder="지번주소">
+			    <input autocomplete="off" type="text" name="addr2" class="form-control" id="sample4_jibunAddress" placeholder="지번주소">
 			    <span id="guide" style="color:#999"></span>
 			  </div>
 		  </div>
@@ -129,17 +129,17 @@
 			   </div>	
 			<div class="col-auto">
 			  <label for="phone2" class="visually-hidden">*전화번호2</label>
-			  <input type="text" name="phone2" class="form-control" id="phone2">
+			  <input autocomplete="off" type="text" name="phone2" class="form-control" id="phone2" required>
 			</div>
 			<div class="col-auto">
 			  <label for="phone3" class="visually-hidden">*전화번호3</label> 
-			  <input type="text" name="phone3" class="form-control" id="phone3">
+			  <input autocomplete="off" type="text" name="phone3" class="form-control" id="phone3" required>
 			</div>
 		  </div>
 		  <div class="row mb-3">
 			  <label for="email1" class="col-sm-2 col-form-label">이메일:</label>
 		    <div class="col-auto">
-			  <input type="text" name="email1" class="form-control" id="email1">
+			  <input autocomplete="off" type="text" name="email1" class="form-control" id="email1">
 			</div>
 			<div class="col-auto">
 			  <label for="xxx" class="visually-hidden">@</label>
@@ -147,7 +147,7 @@
 			</div>
 			<div class="col-auto">
 			  <label for="email2" class="visually-hidden">이메일2</label>
-			  <input type="text" name="email2" class="form-control" id="email2" placeholder="직접입력">
+			  <input autocomplete="off" type="text" name="email2" class="form-control" id="email2" placeholder="직접입력">
 			</div>
 			<label for="email3" class="visually-hidden">이메일2</label>
 		     <div class="col-auto">
