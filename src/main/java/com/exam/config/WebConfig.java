@@ -1,4 +1,4 @@
-package com.exam.config;
+ package com.exam.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +15,13 @@ import com.exam.interceptor.MyHandlerInterceptor;
 //MyFilter 등록
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-
+   
    @Autowired
    MyHandlerInterceptor xxx;
    
    @Override    
    public void addInterceptors(InterceptorRegistry registry) {
-      
+       
       //registry.addInterceptor(xxx);
       // /cart* 로 퉁쳐도됨
       registry.addInterceptor(xxx).addPathPatterns("/logout","/mypage","/cartAdd","/cartList","/cartDelete","/cartDeleteAll","/orderConfirm","/buyGoods");
