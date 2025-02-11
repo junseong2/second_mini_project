@@ -77,7 +77,7 @@ public class GoodsController {
              
 	    int n = feedbackService.writeFeedback(feedbackDTO);
      
-	    List<FeedbackDTO> list = feedbackService.pullFeedback(gCode);
+	    List<FeedbackDTO> list = feedbackService.pullFeedback(gCode); 
 	    //피드백 된 list 내용 모델에 저장
 	    redirectAttributes.addFlashAttribute("feedback", list);
     
