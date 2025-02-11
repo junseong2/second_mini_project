@@ -27,7 +27,7 @@ public class WebConfig implements WebMvcConfigurer {
       registry.addInterceptor(xxx).addPathPatterns("/logout","/mypage","/cartAdd","/cartList","/cartDelete","/cartDeleteAll","/orderConfirm","/buyGoods");
       
    }
-   
+     
    
    @Override
    public void addResourceHandlers(ResourceHandlerRegistry registry) {

@@ -53,7 +53,7 @@ insert into leegoods values ('GUARD04','sojung', '[아대] 스톰 코브라 아�
 
 #여기서부터 실행시켜주어야함
 UPDATE leegoods SET gCode = REPLACE(gCode, 'BAG', 'BOWLBAG') WHERE gCategory = 'bowling_bag' AND gCode LIKE 'BAG%';
-
+UPDATE leegoods SET gCode = REPLACE(gCode, 'BBAG', 'BASKETBAG') WHERE gCategory = 'basketball_bag' AND gCode LIKE 'BBAG%';
 
 
 delete from cart;
