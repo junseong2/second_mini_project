@@ -5,7 +5,7 @@
 
 <header class="border-bottom border-light border-5">
 
-	<div class="container">
+	<div class="container" style="background-color:#f2f2f2; font-weight:700">
 
 
 		<!-- 로그인 안된 경우 화면 -->
