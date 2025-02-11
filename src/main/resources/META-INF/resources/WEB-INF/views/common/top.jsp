@@ -44,7 +44,7 @@
 						</ul>
 					</div>
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link">안녕하세요. ${login.username}님</a></li>
+						<li class="nav-item"><a class="nav-link">안녕하세요. <span style="color: blue;">${login.username}</span>님</a></li>
 						<li class="nav-item"><a class="nav-link" href="logout">Logout</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="mypage">mypage</a>
