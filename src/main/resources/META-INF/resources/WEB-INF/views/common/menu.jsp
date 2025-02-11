@@ -96,7 +96,9 @@ $(document).ready(function(){
 					<div class="search-container">
 						<form id="search">
 							<ul class="navbar-nav">
-								<li class="nav-item"><input type="text" name="search"
+								<li class="nav-item">
+									<input type="text" name="search"
+									autocomplete="off"
 									placeholder="검색할 키워드를 입력하세요."
 									style="border-radius: 20px; width: 300px; height: 100%">
 									<button type="submit" class="btn btn-success"

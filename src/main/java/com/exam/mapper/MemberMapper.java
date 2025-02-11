@@ -1,6 +1,7 @@
 package com.exam.mapper;
 
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -22,5 +23,6 @@ public interface MemberMapper {
 	public int withdraw(String userid);
 	
 	public MemberDTO findByUserid(String userid);
+	public int newPassword(HashMap<String, String> map);
 
 }

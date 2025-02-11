@@ -33,7 +33,7 @@
 		  </div>
   		  <div class="col-12">
 		    <a href="findid">아이디 찾기</a> &nbsp;
-		    <a href="findpw">비밀번호 찾기</a>
+		    <a href="updatepw">비밀번호 재설정하기</a>
 		  </div>
 		  <div class="col-12">
 		    <button type="submit" class="btn btn-success">로그인</button>
