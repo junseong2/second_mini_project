@@ -2,6 +2,8 @@ package com.exam.controller;
         
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -68,8 +70,12 @@ public class GoodsController {
 	                            @RequestParam String gCode,
 	                            @RequestParam String gContext, Model m,
 	                            RedirectAttributes redirectAttributes) {
-	    MemberDTO dto = (MemberDTO)m.getAttribute("login");
-    
+	    //MemberDTO dto = (MemberDTO)m.getAttribute("login");
+		//AuthProvider 에서 저장시킨 Authentication 정보가 필요함
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		MemberDTO dto = (MemberDTO)auth.getPrincipal();
+
+		
 	    FeedbackDTO feedbackDTO = new FeedbackDTO();
 	    feedbackDTO.setUserid(userid); 
 	    feedbackDTO.setgCode(gCode); 

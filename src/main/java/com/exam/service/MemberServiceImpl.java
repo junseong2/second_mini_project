@@ -56,5 +56,9 @@ public class MemberServiceImpl implements MemberService{
 	public int withdraw(String userid) {
 		return mapper.withdraw(userid);
 	}
+	@Override
+	public MemberDTO findByUserid(String userid) {
+		return mapper.findByUserid(userid);
+	}
 
 }

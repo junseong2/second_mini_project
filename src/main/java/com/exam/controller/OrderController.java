@@ -1,5 +1,7 @@
 package com.exam.controller;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +18,7 @@ import com.exam.service.OrderService;
 import jakarta.validation.constraints.Size;
 
 @Controller
-@SessionAttributes("login")
+//@SessionAttributes("login")
 public class OrderController {
 
 	OrderService orderService;
@@ -33,8 +35,13 @@ public class OrderController {
 		
 		CartDTO cartDTO = orderService.orderConfirm(num);
 		
-		MemberDTO dto =
-				(MemberDTO)m.getAttribute("login");
+//		MemberDTO dto =
+//				(MemberDTO)m.getAttribute("login");
+		
+		//AuthProvider 에서 저장시킨 Authentication 정보가 필요함
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		MemberDTO dto = (MemberDTO)auth.getPrincipal();
+		
 		String userid = dto.getUserid();
 		MemberDTO memberDTO = orderService.orderConfirmMember(userid);
 
@@ -53,8 +60,11 @@ public class OrderController {
 	         @RequestParam String addr1,
 	         @RequestParam String addr2,
 	         @RequestParam String phone, Model m2) { 
-	      MemberDTO dto = (MemberDTO)m.getAttribute("login");
+	      //MemberDTO dto = (MemberDTO)m.getAttribute("login");
 	      
+		//AuthProvider 에서 저장시킨 Authentication 정보가 필요함
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		MemberDTO dto = (MemberDTO)auth.getPrincipal();
 	      String userid = dto.getUserid();
 	      
 	      CartDTO cartDTO = orderService.orderConfirm(num);
@@ -107,7 +117,12 @@ public class OrderController {
 		// @ControllerAdvice 지정한 GlobalExceptionHandler 생성.
 		
 		//성공
-		MemberDTO memberDTO = (MemberDTO)m.getAttribute("login");
+		//MemberDTO memberDTO = (MemberDTO)m.getAttribute("login");
+		
+		//AuthProvider 에서 저장시킨 Authentication 정보가 필요함
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		MemberDTO memberDTO = (MemberDTO)auth.getPrincipal();
+		
 		String userid = memberDTO.getUserid();
 		
 		CartDTO cartDTO = new CartDTO();
