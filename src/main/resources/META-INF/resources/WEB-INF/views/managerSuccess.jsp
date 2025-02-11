@@ -38,7 +38,7 @@
 	            alert("${message}");  // 전달된 message 값을 alert로 띄운다.
 	        </script>
   		</c:if>
-	<jsp:include page="goods/managerLogin.jsp" flush="true" />
+	<jsp:include page="goods/manager.jsp" flush="true" />
  </div>
 </body>
 </html>
