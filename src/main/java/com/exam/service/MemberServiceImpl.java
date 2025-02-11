@@ -54,7 +54,15 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	@Transactional
 	public int withdraw(String userid) {
-		return mapper.withdraw(userid);
+		return mapper.withdraw(userid); 
+	}
+	@Override
+	public MemberDTO findByUserid(String userid) {
+		return mapper.findByUserid(userid);
+	}
+	@Override
+	public int newPassword(HashMap<String, String> map) {
+		return mapper.newPassword(map);
 	}
 
 }

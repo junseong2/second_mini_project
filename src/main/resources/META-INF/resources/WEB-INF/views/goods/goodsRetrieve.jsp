@@ -6,6 +6,8 @@
 <script src="webjars/jquery/3.7.1/jquery.min.js"></script>
 <%@ taglib prefix="c"  uri="jakarta.tags.core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<!-- taglib 추가 -->
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <script>
   $(document).ready(function(){
@@ -89,8 +91,8 @@
             		        <!-- 상품 gCode가 TSHIRT인 경우 -->
 		                    <c:if test="${fn:contains(goodsRetrieve.gCode, 'TSHIRT')}">
 		                        <!-- 사이즈 선택 O, 색상 선택 X 무조건 기본 -->
-		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;">
-		                            <option value="" disabled selected required>사이즈선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
+		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;" required>
+		                            <option value="" disabled selected>사이즈선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
 		                            <option  value="90">90</option>
 		                            <option  value="95">95</option>
 		                            <option  value="100">100</option>
@@ -102,9 +104,36 @@
 		                            <option selected value="기본">기본</option>
 		                        </select>
 		                    </c:if>
+		                    
+		                    <!-- 상품 gCode가 BAG인 경우 -->
+		                    <c:if test="${fn:contains(goodsRetrieve.gCode, 'BOWLBAG')}">
+		                        <!-- 사이즈 선택 X, 색상 선택 O -->
+		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;">   
+		                            <option selected value="기본">기본</option>
+		                            
+		                        </select>
+		                        <select class="select_change" name="gColor" id="gColor" style="font-size: 12px;" required>
+		                            <option value="" disabled selected required>색상 선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
+		                            <option  value="GREEN">GREEN</option>
+		                            <option  value="RED">RED</option>
+		                            <option  value="BLUE">BLUE</option>
+		                            <option  value="BLACK">BLACK</option>
+		                        </select>
+		                    </c:if>
+		                    
+		                    <!-- 상품 gCode가 BALL을 포함한 경우 -->
+		                    <c:if test="${fn:contains(goodsRetrieve.gCode, 'BASKETBAG')}">
+		                        <!-- 사이즈와 색상 선택을 비활성화 -->
+		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;">
+		                            <option selected value="기본">기본</option>
+		                        </select>
+		                        <select class="select_change" name="gColor" id="gColor" style="font-size: 12px;">
+		                            <option selected value="기본">기본</option>
+		                        </select>
+		                    </c:if>
 		
 		                    <!-- 상품 gCode가 ball, tshirt를 포함하지 않은 경우 -->
-		                    <c:if test="${!fn:contains(goodsRetrieve.gCode, 'BALL') && !fn:contains(goodsRetrieve.gCode, 'TSHIRT')}">
+		                    <c:if test="${!fn:contains(goodsRetrieve.gCode, 'BALL') && !fn:contains(goodsRetrieve.gCode, 'TSHIRT') && !fn:contains(goodsRetrieve.gCode, 'BOWLBAG') && !fn:contains(goodsRetrieve.gCode, 'BASKETBAG')}">
 		                        <!-- 사이즈와 색상 선택 활성화 -->
 		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;" required>
 		                            <option value="" disabled selected>사이즈선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
@@ -114,11 +143,9 @@
 		                        </select>
 		                        <select class="select_change" name="gColor" id="gColor" style="font-size: 12px;" required>
 		                            <option value="" disabled selected>색상선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
-		                            <option value="navy">navy</option>
-		                            <option value="black">black</option>
-		                            <option value="ivory">ivory</option>
-		                            <option value="white">white</option>
-		                            <option value="gray">gray</option>
+		                            <option value="BLACK">BLACK</option>
+		                            <option value="RED">RED</option>
+		                            <option value="BLUE">BLUE</option>
 		                        </select>
 		                    </c:if>
 		                </h6>
@@ -142,26 +169,27 @@
 			<!-- 후기 작성 폼 -->
 
 			<!-- 로그인 상태 체크 -->
-			<c:if test="${not empty login}">
+			<sec:authorize access="isAuthenticated()">
+			<sec:authentication property="principal.username" var="username"/>
 			    <!-- 로그인된 사용자만 후기 작성 폼을 볼 수 있도록 조건부로 표시 -->
 			    <form id="feedbackForm" action="writeFeedback" method="post" class="column g-3 m-4" style="width:100%; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; padding: 15px; margin-bottom: 20px">
 			        <input type="hidden" name="gCode" value="${goodsRetrieve.gCode}">
-			        <input type="hidden" name="userid" value="${login.userid}">
+			        <input type="hidden" name="userid" value="${username}">
 			        <h5 style="font-size: 14px; color: green; padding: 10px; margin-bottom:15px; font-size:1.2rem; font-weight:700">후기 작성</h5>
 			
 			        <!-- 사용자 이름과 후기 입력란을 가로로 배치 -->
 			        <div style="display: flex; align-items: center; margin-bottom: 15px;">
 			            <div style="margin-right: 10px; font-size: 14px;">
-			                <strong>${login.userid}</strong> 님 :
+			                <strong>${username}</strong> 님 :
 			            </div>
-			            <input type="text" name="gContext" placeholder="후기를 입력하세요." style="width: 70%; padding: 8px; font-size: 14px; margin-right: 10px;">
+			            <input autocomplete="off" type="text" name="gContext" placeholder="후기를 입력하세요." style="width: 70%; padding: 8px; font-size: 14px; margin-right: 10px;">
 			            <button type="submit" style="padding: 6px 12px; font-size: 14px;" class="btn btn-success">작성</button>
 			        </div>
 			    </form>
-			</c:if>
+			</sec:authorize>
 
 			<!-- 로그인 안된 경우 -->
-			<c:if test="${empty login}">
+			<sec:authorize access="isAnonymous()"> 
 			    <form id="feedbackForm" action="writeFeedback" method="post" class="column g-3 m-4" style="width:100%; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; padding: 15px; margin-bottom: 20px">
 			        <input type="hidden" name="gCode" value="${goodsRetrieve.gCode}">
 			        <input type="hidden" name="userid" value="${login.userid}">
@@ -173,7 +201,7 @@
 			            <button type="submit" style="padding: 6px 12px; font-size: 14px;" class="btn btn-success" disabled>작성</button>
 			        </div>
 			    </form>
-			</c:if>
+			</sec:authorize>
 
 			<!-- 후기 목록 -->
 

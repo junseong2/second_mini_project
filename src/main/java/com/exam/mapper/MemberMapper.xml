@@ -65,6 +65,16 @@
     	delete from member
     	where userid = #{userid}
     </delete>
+    
+   	<select id="findByUserid" parameterType="string" resultType="MemberDTO">
+		select userid, passwd, username from member
+		where userid=#{userid}
+	</select>
+	
+	<update id="newPassword" parameterType="hashmap">
+		update member set passwd = #{passwd}
+		where userid=#{userid}
+	</update>
 	 
 	 
 	 

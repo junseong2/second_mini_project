@@ -3,6 +3,8 @@ package com.exam.controller;
 import java.util.List;  
 import java.util.Map;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -27,7 +29,7 @@ import jakarta.validation.constraints.Size;
  
 @Controller
 @Validated
-@SessionAttributes("login")
+//@SessionAttributes("login")
 public class CartController {
 
 	
@@ -57,7 +59,12 @@ public class CartController {
 		// @ControllerAdvice 지정한 GlobalExceptionHandler 생성.
 		
 		//성공
-		MemberDTO memberDTO = (MemberDTO)m.getAttribute("login");
+		//MemberDTO memberDTO = (MemberDTO)m.getAttribute("login");
+		
+		//AuthProvider 에서 저장시킨 Authentication 정보가 필요함
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		MemberDTO memberDTO = (MemberDTO)auth.getPrincipal();
+		
 		String userid = memberDTO.getUserid();
 		 
 		CartDTO cartDTO = new CartDTO();
@@ -80,7 +87,11 @@ public class CartController {
 	@ModelAttribute("cartList")
 	public List<CartDTO> cartList(Model m) {
 		
-		MemberDTO memberDTO = (MemberDTO)m.getAttribute("login");
+		//MemberDTO memberDTO = (MemberDTO)m.getAttribute("login");
+		
+		//AuthProvider 에서 저장시킨 Authentication 정보가 필요함
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		MemberDTO memberDTO = (MemberDTO)auth.getPrincipal();
 		String userid = memberDTO.getUserid();
 		
 		// 데이터

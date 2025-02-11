@@ -48,3 +48,33 @@ insert into leegoods values ('GUARD01','sojung', '[아대] 스톰 몽구스 아�
 insert into leegoods values ('GUARD02','sojung', '[아대] 스톰 몽구스 아대 (왼손)',	'블랙 / 레드 / 블루 왼손 잡이용 몽구스 아대', '95000', 'guard02.gif');
 insert into leegoods values ('GUARD03','sojung', '[아대] 스톰 코브라 아대 (오른손)',	'블랙 / 레드 / 블루 오른손 잡이용 코브라 아대', '95000', 'guard03.gif');
 insert into leegoods values ('GUARD04','sojung', '[아대] 스톰 코브라 아대 (왼손)',	'블랙 / 레드 / 블루 왼손 잡이용 코브라 아대', '95000', 'guard04.gif');
+
+
+
+#여기서부터 실행시켜주어야함
+UPDATE leegoods SET gCode = REPLACE(gCode, 'BAG', 'BOWLBAG') WHERE gCategory = 'bowling_bag' AND gCode LIKE 'BAG%';
+UPDATE leegoods SET gCode = REPLACE(gCode, 'BBAG', 'BASKETBAG') WHERE gCategory = 'basketball_bag' AND gCode LIKE 'BBAG%';
+
+
+delete from cart;
+delete from orderinfo;
+
+-- cart 테이블 수정
+ALTER TABLE cart
+DROP FOREIGN KEY cart_gCode_fk;
+
+ALTER TABLE cart
+ADD CONSTRAINT cart_gCode_fk
+FOREIGN KEY (gCode)
+REFERENCES leegoods(gCode) ON DELETE CASCADE;
+
+-- orderInfo 테이블 수정
+ALTER TABLE orderInfo
+DROP FOREIGN KEY orderInfo_gCode_fk;
+
+ALTER TABLE orderInfo
+ADD CONSTRAINT orderInfo_gCode_fk
+FOREIGN KEY (gCode)
+REFERENCES leegoods(gCode) ON DELETE CASCADE;
+
+#여기까지
