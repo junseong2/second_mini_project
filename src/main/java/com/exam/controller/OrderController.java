@@ -90,7 +90,7 @@ public class OrderController {
 
  
          
-	@GetMapping("/buyGoods")
+	@GetMapping("/buyGoods") 
 	public String buyGoods( @RequestParam String gCode,
 				           @RequestParam String gSize,
 			               @RequestParam  String gColor,

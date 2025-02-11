@@ -89,8 +89,8 @@
             		        <!-- 상품 gCode가 TSHIRT인 경우 -->
 		                    <c:if test="${fn:contains(goodsRetrieve.gCode, 'TSHIRT')}">
 		                        <!-- 사이즈 선택 O, 색상 선택 X 무조건 기본 -->
-		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;">
-		                            <option value="" disabled selected required>사이즈선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
+		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;" required>
+		                            <option value="" disabled selected>사이즈선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
 		                            <option  value="90">90</option>
 		                            <option  value="95">95</option>
 		                            <option  value="100">100</option>
@@ -102,9 +102,25 @@
 		                            <option selected value="기본">기본</option>
 		                        </select>
 		                    </c:if>
+		                    
+		                    <!-- 상품 gCode가 BAG인 경우 -->
+		                    <c:if test="${fn:contains(goodsRetrieve.gCode, 'BOWLBAG')}">
+		                        <!-- 사이즈 선택 X, 색상 선택 O -->
+		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;">   
+		                            <option selected value="기본">기본</option>
+		                            
+		                        </select>
+		                        <select class="select_change" name="gColor" id="gColor" style="font-size: 12px;" required>
+		                            <option value="" disabled selected required>색상 선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
+		                            <option  value="GREEN">GREEN</option>
+		                            <option  value="RED">RED</option>
+		                            <option  value="BLUE">BLUE</option>
+		                            <option  value="BLACK">BLACK</option>
+		                        </select>
+		                    </c:if>
 		
 		                    <!-- 상품 gCode가 ball, tshirt를 포함하지 않은 경우 -->
-		                    <c:if test="${!fn:contains(goodsRetrieve.gCode, 'BALL') && !fn:contains(goodsRetrieve.gCode, 'TSHIRT')}">
+		                    <c:if test="${!fn:contains(goodsRetrieve.gCode, 'BALL') && !fn:contains(goodsRetrieve.gCode, 'TSHIRT') && !fn:contains(goodsRetrieve.gCode, 'BOWLBAG')}">
 		                        <!-- 사이즈와 색상 선택 활성화 -->
 		                        <select class="select_change" size="1" name="gSize" id="gSize" style="font-size: 12px;" required>
 		                            <option value="" disabled selected>사이즈선택</option> <!-- 기본값으로 선택되지 않게 설정 -->
