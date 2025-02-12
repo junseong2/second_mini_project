@@ -60,7 +60,7 @@ public class BoardController {
             @RequestParam String content,
             @RequestParam MultipartFile image) {
 		BoardDTO dto = new BoardDTO();
-		  // 🔥 DTO에 이미지 파일명 저장
+		  //  DTO에 이미지 파일명 저장
 
 		String imageFileNames = image.getOriginalFilename();
 		File f = new File("C://upload", imageFileNames);
