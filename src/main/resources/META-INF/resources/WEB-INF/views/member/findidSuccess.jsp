@@ -6,14 +6,12 @@
 <div class="container">
    <div class="row mb-3" style="margin-top:30px">
    	
-   	<h4>회원님의 ID는 "${userid }" 입니다!</h4>
+   	<h4>회원님의 ID는 "<span style="color:blue; font-weight:700">${userid }</span>" 입니다!</h4>
    	
    	<!-- 버튼들을 중앙에 배치할 div 추가 -->
-    <div class="col-auto d-flex justify-content-center" style="margin-top:15px">
-        <!-- <button type="button" class="btn btn-success mx-2">로그인 하러가기</button>
-        <button type="button" class="btn btn-warning mx-2">비밀번호 찾기</button> -->
-	    <a href="loginForm">로그인 하러가기</a> &nbsp;
-	    <a href="findpw">비밀번호 찾기</a>
+    <div style="margin-top:15px">
+	    <a href="loginForm">로그인 하러가기</a> &nbsp;&nbsp;
+	    <a href="updatepw">비밀번호 재설정하기</a>
     </div>
   </div>
 </div>
