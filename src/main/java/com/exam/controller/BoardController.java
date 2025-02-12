@@ -73,7 +73,7 @@ public class BoardController {
 		
 		int n = boardService.readcnt(Integer.parseInt(num));
 		
-		return "retrieve";
+		return "retrieve"; 
 	}
 	
 	@GetMapping("/updateBoard") 
