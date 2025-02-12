@@ -115,9 +115,9 @@
 			</div>
 		</div>
 		<div class="col-12">
-			<button type="submit" id="update" class="btn btn-primary">update</button>
+			<button type="submit" id="update" class="btn btn-success">update</button>
 			<button type="reset" id="reset" class="btn btn-primary">cancel</button>
-			<button type="submit" id="withdraw" class="btn btn-primary">탈퇴하기</button>
+			<button type="submit" id="withdraw" class="btn btn-danger">탈퇴하기</button>
 		</div>
 	</form>
 
