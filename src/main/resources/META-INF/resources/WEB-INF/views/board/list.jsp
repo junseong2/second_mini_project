@@ -27,10 +27,10 @@
         <c:forEach var="dto" items="${findAll}">
             <tr>
                 <td>${dto.num}</td>
-         <td>
-            <!-- num을 사용하여 링크 연결 -->
-            <a href="retrieve?num=${dto.num}">${dto.title}</a>
-        </td>
+		         <td>
+		            <!-- num을 사용하여 링크 연결 -->
+		            <a href="retrieve?num=${dto.num}">${dto.title}</a>
+		        </td>
                 <td>${dto.author}</td>
                 <td>${dto.writeday}</td>
                 <td>${dto.readcnt}</td>
