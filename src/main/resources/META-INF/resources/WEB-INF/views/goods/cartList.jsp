@@ -19,7 +19,7 @@
 	  $("#deleteAll").on("click", function(){
 		//event.preventDefault();
 		
-	    	var f = $("form")[0];
+	    	var f = $("#deleteForm")[0];
 	    	f.action="cartDeleteAll";
 	    	f.method="GET";
 		    f.submit();  // 서브밋 실행  <inpu type="button">는 명시적으로 submit() 호출
@@ -30,7 +30,7 @@
   });//end ready
 </script>
 
-<form>
+<form id="deleteForm">
   <div class="TodoApp">
     <div class="container">
             <div>
