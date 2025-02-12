@@ -86,26 +86,26 @@ ${cartDTO }
 		  <div class="row mb-3">
 		    <label for="username" class="col-sm-2 col-form-label">이름</label>
 		    <div class="col-auto">
-		      <input type="text" class="form-control" name="user_name" id="mname" value="${mDTO.username }">
+		      <input type="text" class="form-control" name="user_name" id="mname" value="${mDTO.username }" disabled="disabled">
 		    </div>
 		  </div>
 
 		  <div class="row mb-3">
 			    <label for="sample4_postcode" class="col-sm-2 col-form-label">우편번호</label>
 		      <div class="col-auto">
-			    <input type="text" name="post1" class="form-control" value="${mDTO.post }" id="mpost" placeholder="우편번호">
+			    <input type="text" name="post1" class="form-control" value="${mDTO.post }" id="mpost" placeholder="우편번호" disabled="disabled">
 			  </div>
 		  </div>
 		   <div class="row mb-3">
 			    <label for="sample4_roadAddress" class="col-sm-2 col-form-label">주소</label>
 		      <div class="col-sm-5">
-			    <input type="text"  name="addr_1" class="form-control" value="${mDTO.addr1 }" id="maddress1" placeholder="도로명주소">
+			    <input type="text"  name="addr_1" class="form-control" value="${mDTO.addr1 }" id="maddress1" placeholder="도로명주소" disabled="disabled">
 			  </div>
 		  </div>
 		  <div class="row mb-3">
 		    <label for="sample4_jibunAddress" class="col-sm-2 col-form-label"></label>
 		    <div class="col-sm-5">
-		      <input type="text" name="addr_2" class="form-control" value="${mDTO.addr2 }" id="maddress2" placeholder="지번주소">
+		      <input type="text" name="addr_2" class="form-control" value="${mDTO.addr2 }" id="maddress2" placeholder="지번주소" disabled="disabled">
 		      <span id="guide" style="color:#999"></span>
 		    </div>
 		  </div>
@@ -113,7 +113,7 @@ ${cartDTO }
 		  <div class="row mb-3">
 		      <label for="phone1" class="col-sm-2 col-form-label">전화번호</label>
 		     <div class="col-auto">
-		    	  <input type="text" name="phone1" class="form-control" id="mphone" value="${mDTO.phone1 }${mDTO.phone2}${mDTO.phone3 }">
+		    	  <input type="text" name="phone1" class="form-control" id="mphone" value="${mDTO.phone1 }${mDTO.phone2}${mDTO.phone3 }" disabled="disabled">
 			 </div>	
         </div>
       </div> 
