@@ -74,4 +74,20 @@ public class BoardController {
 		return "retrieve";
 	}
 	
+	@GetMapping("/updateBoard") 
+	public String updateBoard(@RequestParam String num,
+			@RequestParam String title,
+			@RequestParam String author,
+			@RequestParam String content) {
+		BoardDTO dto = new BoardDTO();
+		dto.setNum(Integer.parseInt(num));
+		dto.setTitle(title);
+		dto.setAuthor(author);
+		dto.setContent(content);
+		
+		int n = boardService.update(dto);
+		
+		return "redirect:list";
+	}
+	
 }

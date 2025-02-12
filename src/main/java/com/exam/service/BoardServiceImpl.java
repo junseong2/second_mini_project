@@ -33,6 +33,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardDTO retrieve(int num) {
 		return mapper.retrieve(num);
+	}
+
+	@Override
+	public int update(BoardDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.update(dto);
 	}	
 
 }
