@@ -45,5 +45,25 @@ public class BoardController {
 		
 		return "list"; 
 	}
+	
+	
+	@GetMapping("/boardwrite")
+	public String writeUI() {
+		return "write";
+	} 
 
+	
+	@PostMapping("/boardwrite")
+	public String write(@RequestParam String title,
+			@RequestParam String author,
+			@RequestParam String content) {
+		BoardDTO dto = new BoardDTO();
+		dto.setTitle(title);
+		dto.setAuthor(author);
+		dto.setContent(content);
+		
+		int n = boardService.write(dto);
+		return "redirect:list";
+	}
+	
 }

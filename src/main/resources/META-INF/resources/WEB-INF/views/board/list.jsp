@@ -34,6 +34,7 @@
             </tr>
         </c:forEach>
 
+	<a href="boardwrite">글쓰기</a>
 
 
 
