@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.mapper.BoardMapper">
+
+	<!--  전체 totalRecord 개수 -->
+	<select id="totalRecord" resultType="int">
+		select count(*) from board
+	</select>
+
+	<!-- 기본적인 CRUD 만들기 -->
+	<!-- select1 전체 보여주기 -->
+	<select id="list" resultType="BoardDTO">
+		select num, title, author, content, writeday, readcnt, image
+		from board order by num desc
+	</select>
+	
+	
+	<insert id="write" parameterType="BoardDTO">
+		insert into board (title, author, content,image)
+		values (#{title}, #{author}, #{content},#{image})
+	</insert>
+	
+	<select id="retrieve" parameterType="int" resultType="BoardDTO">
+		select num, title, author, content, writeday, readcnt,image
+		from board
+		where num = #{num}
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="readcnt" parameterType="int">
+		update board set readcnt=readcnt+1 
+		where num=#{num}
+	</update>
+	
+	
+	<!--  수정 -->
+	<update id="update" parameterType="BoardDTO">
+		update board set 
+		title=#{title}, author=#{author}, content=#{content}, image=#{image}
+		where num=#{num}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="delete" parameterType="int">
+	delete from board where num=#{num}
+	</delete>
+	
+	
+	
+</mapper>
