@@ -23,6 +23,11 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardDTO> list() {
 		// TODO Auto-generated method stub
 		return mapper.list();
+	}
+
+	@Override
+	public int write(BoardDTO dto) {
+		return mapper.write(dto);
 	}	
 
 }
