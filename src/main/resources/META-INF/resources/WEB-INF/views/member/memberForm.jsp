@@ -1,222 +1,134 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <script src="webjars/jquery/3.7.1/jquery.min.js"></script>
+
 <script>
   $(document).ready(function(){
-	  // id 중복체크
-	  $("#idDupulicatedcheck").on("click", function(){
-		  event.preventDefault();
-		  
-		  //ajax
-          $.ajax({
-             url:"idCheck",
-             method:"get",
-             dataType :'text', // 응답 데이터타입
-             data:{             // 서버에 전달
-            	 userid:$("#userid").val()
-             },          
-             success:function(responseText, status , xhr){
-                 console.log(responseText, status);
-                 $("#idcheck").text(responseText);
-                }, 
-             error:function(xhr, status, error){
-                console.log("error:", error);
-             }
-          });//end ajax
-	  });//end on
-	  
-	  // 비번 확인
-	  $("#passwd2").on("keyup", function(){
-		  
-		  var pw = $("#passwd").val();
-		  var pw2 = $("#passwd2").val();
-		  
-		  var mesg = "비번 일치";
-		  if(pw !== pw2){
-			  mesg = "비번 불일치";
-		  }
-		  
-		  $("#pwdcheck").text(mesg);
-		  
-	  });//end on
-	  
-		//주소 선택시 입력창에 그 주소가 그대로 나오게..
-		$("#email3").on("change",function(){
-			var fixEmail = $("#email3").val();
-			$("#email2").val(fixEmail);
-		})
-	  
-	  // 회원가입 처리
-	  $("form").on("submit", function(){
-		  this.action="signup";   	 // MemberController
-		  this.method="post"         // doPost
-	  });
-	  
-	  //취소 버튼 누르면 홈
-	  $("#reset").on("click",function(){
-		 window.location.href="/minipj2/main"; 
-	  });
-	  
-	  
-  });//end ready
-</script>
-    
-<div class="container">
-	<div>${errorMessage}</div>
-    <form class="row g-3 m-4">
-		  <div class="row mb-3">
-		    <label  for="userid" class="col-sm-2 col-form-label">*아이디</label>
-		    <div class="col-auto">
-		      <input autocomplete="off" type="text" class="form-control" id="userid" name="userid" required>
-		    </div>
-		    <div class="col-auto">
-			    <button type="button" class="btn btn-primary mb-3" id="idDupulicatedcheck">아이디중복</button>
-  			</div>
-  			<div class="col-sm-3">
-		         <span id="idcheck" class="fs-5"></span>
-		        </div>
-		  </div>
-		 <div class="row mb-3">
-		    <label for="password" class="col-sm-2 col-form-label">*비밀번호</label>
-		    <div class="col-auto">
-		      <input type="password" class="form-control" name="passwd" id="passwd" required>
-		    </div>
-		  </div>
-		  <div class="row mb-3">
-		    <label for="passwd2" class="col-sm-2 col-form-label">비밀번호확인</label>
-		    <div class="col-sm-5">
-		      <input type="password" class="form-control" name="passwd2" id="passwd2">
-		    </div>
-		    <div class="col-sm-3">
-		      <span id="pwdcheck" class="fs-5"></span>
-		    </div>
-		  </div>
-		  <div class="row mb-3">
-		    <label for="username" class="col-sm-2 col-form-label">*이름</label>
-		    <div class="col-auto">
-		      <input autocomplete="off" type="text" class="form-control" name="username" id="username" required>
-		    </div>
-		  </div>
-		  <hr>
-		  <div class="row mb-3">
-		      <div class="col-auto">
-			    <label for="sample4_postcode" class="visually-hidden">post</label>
-			    <input autocomplete="off" type="text" name="post" class="form-control" id="sample4_postcode" placeholder="우편번호">
-			  </div>
-			  <div class="col-auto">
-			    <button type="button" class="btn btn-primary mb-3" onclick="sample4_execDaumPostcode()">우편번호 찾기</button>
-  			  </div>
-		  </div>
-		   <div class="row mb-3">
-		      <div class="col-sm-5">
-			    <label for="sample4_roadAddress" class="visually-hidden">도로명주소</label>
-			    <input autocomplete="off" type="text"  name="addr1" class="form-control" id="sample4_roadAddress" placeholder="도로명주소">
-			  </div>
-			 <div class="col-sm-5">
-			    <label for="sample4_jibunAddress" class="visually-hidden">지번주소</label>
-			    <input autocomplete="off" type="text" name="addr2" class="form-control" id="sample4_jibunAddress" placeholder="지번주소">
-			    <span id="guide" style="color:#999"></span>
-			  </div>
-		  </div>
-		  <hr>
-		  <div class="row mb-3">
-		      <label for="phone1" class="col-sm-2 col-form-label">전화번호</label>
-		     <div class="col-auto">
-		      <select name="phone1" class="form-control" id="phone1">
-				 <option value="010">010</option>
-				 <option value="011">011</option>
-				</select>
-			   </div>	
-			<div class="col-auto">
-			  <label for="phone2" class="visually-hidden">*전화번호2</label>
-			  <input autocomplete="off" type="text" name="phone2" class="form-control" id="phone2" required>
-			</div>
-			<div class="col-auto">
-			  <label for="phone3" class="visually-hidden">*전화번호3</label> 
-			  <input autocomplete="off" type="text" name="phone3" class="form-control" id="phone3" required>
-			</div>
-		  </div>
-		  <div class="row mb-3">
-			  <label for="email1" class="col-sm-2 col-form-label">이메일:</label>
-		    <div class="col-auto">
-			  <input autocomplete="off" type="text" name="email1" class="form-control" id="email1">
-			</div>
-			<div class="col-auto">
-			  <label for="xxx" class="visually-hidden">@</label>
-			  <span>@</span>
-			</div>
-			<div class="col-auto">
-			  <label for="email2" class="visually-hidden">이메일2</label>
-			  <input autocomplete="off" type="text" name="email2" class="form-control" id="email2" placeholder="직접입력">
-			</div>
-			<label for="email3" class="visually-hidden">이메일2</label>
-		     <div class="col-auto">
-		      <select name="email3" class="form-control" id="email3">
-				  <option value="daum.net">daum.net</option>
-	 			  <option value="google.com">google.com</option>
-	              <option value="naver.com">naver.com</option>
-				</select>
-			   </div>	
-		  </div>
-		  <div class="col-12">
-		    <button type="submit" class="btn btn-primary">Sign in</button>
-		    <button type="reset" class="btn btn-primary" id="reset">cancel</button>
-		  </div>
- </form>
-	
-</div>
+      $("#idDupulicatedcheck").on("click", function(event){
+          event.preventDefault();
+          $.ajax({ url:"idCheck", method:"get", dataType :'text',
+              data: { userid: $("#userid").val() },          
+              success:function(responseText){
+                  $("#idcheck").text(responseText).removeClass("text-danger text-success")
+                                .addClass(responseText.includes("사용 가능") ? "text-success" : "text-danger");
+              }, error:function(){
+                  $("#idcheck").text("오류 발생").addClass("text-danger");
+              }
+          });
+      });
 
+      $("#passwd2").on("keyup", function(){
+          var pw = $("#passwd").val(), pw2 = $("#passwd2").val();
+          $("#pwdcheck").text(pw === pw2 ? "비밀번호 일치" : "비밀번호 불일치")
+                        .removeClass("text-danger text-success")
+                        .addClass(pw === pw2 ? "text-success" : "text-danger");
+      });
+      $("#email3").on("change", function(){ $("#email2").val($(this).val()); });
+      $("form").on("submit", function(){ this.action = "signup"; this.method = "post"; });
+      $("#reset").on("click", function(){ window.location.href = "/minipj2/main"; });
+  });
+</script>
+
+<div
+	class="container d-flex justify-content-center align-items-center vh-80">
+	<div class="card shadow-lg p-4" style="width: 800px;">
+		<h3 class="text-center mb-4">회원가입</h3>
+
+
+		<form>
+			<div class="row">
+				<!-- 왼쪽 컬럼: 기본 정보 -->
+				<div class="col-md-6">
+					<div class="mb-2">
+						<label class="form-label">* 아이디</label>
+						<div class="input-group">
+							<input type="text" class="form-control shadow-sm" id="userid"
+								name="userid" required>
+							<button type="button" class="btn btn-primary"
+								id="idDupulicatedcheck">중복확인</button>
+						</div>
+						<small id="idcheck" class="d-block mt-1"></small>
+					</div>
+					<div class="mb-2">
+						<label class="form-label">* 비밀번호</label> <input type="password"
+							class="form-control shadow-sm" name="passwd" id="passwd" required>
+					</div>
+					<div class="mb-2">
+						<label class="form-label">비밀번호 확인</label> <input type="password"
+							class="form-control shadow-sm" name="passwd2" id="passwd2">
+						<small id="pwdcheck" class="d-block mt-1"></small>
+					</div>
+					<div class="mb-2">
+						<label class="form-label">* 이름</label> <input type="text"
+							class="form-control shadow-sm" name="username" id="username"
+							required>
+					</div>
+
+				</div>
+
+				<!-- 오른쪽 컬럼: 주소 입력 -->
+				<div class="col-md-6">
+					<div class="mb-2">
+						<label class="form-label">우편번호</label>
+						<div class="input-group">
+							<input type="text" name="post" class="form-control"
+								id="sample4_postcode">
+							<button type="button" class="btn btn-primary"
+								onclick="sample4_execDaumPostcode()">검색</button>
+						</div>
+					</div>
+					<div class="mb-2">
+						<label class="form-label">도로명 주소</label> <input type="text"
+							name="addr1" class="form-control" id="sample4_roadAddress">
+					</div>
+					<div class="mb-2">
+						<label class="form-label">지번 주소</label> <input type="text"
+							name="addr2" class="form-control" id="sample4_jibunAddress">
+					</div>
+					<small id="guide" class="text-muted"></small>
+									<div class="mb-2">
+					<label class="form-label">전화번호</label>
+					<div class="input-group">
+						<select name="phone1" class="form-select">
+							<option value="010">010</option>
+							<option value="011">011</option>
+						</select> <input type="text" name="phone2" class="form-control" required>
+						<input type="text" name="phone3" class="form-control" required>
+					</div>
+				</div>
+				</div>
+				<div class="mb-2">
+					<label class="form-label">이메일</label>
+					<div class="input-group">
+						<input type="text" name="email1" class="form-control"> <span
+							class="input-group-text">@</span> <input type="text"
+							name="email2" class="form-control" placeholder="직접입력"> <select
+							name="email3" class="form-select" id="email3">
+							<option value="daum.net">daum.net</option>
+							<option value="google.com">google.com</option>
+							<option value="naver.com">naver.com</option>
+						</select>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- 가입/취소 버튼 -->
+			<div class="mt-3 d-flex justify-content-center gap-2">
+				<button type="submit" class="btn btn-success btn-lg">가입하기</button>
+				<button type="reset" id="reset"
+					class="btn btn-warning btn-lg">취소</button>
+			</div>
+		</form>
+	</div>
+</div>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
-    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
-                var extraRoadAddr = ''; // 도로명 조합형 주소 변수
-
-                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                    extraRoadAddr += data.bname;
-                }
-                // 건물명이 있고, 공동주택일 경우 추가한다.
-                if(data.buildingName !== '' && data.apartment === 'Y'){
-                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                }
-                // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                if(extraRoadAddr !== ''){
-                    extraRoadAddr = ' (' + extraRoadAddr + ')';
-                }
-                // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
-                if(fullRoadAddr !== ''){
-                    fullRoadAddr += extraRoadAddr;
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
-                document.getElementById('sample4_roadAddress').value = fullRoadAddr;
-                document.getElementById('sample4_jibunAddress').value = data.jibunAddress;
-
-                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-                if(data.autoRoadAddress) {
-                    //예상되는 도로명 주소에 조합형 주소를 추가한다.
-                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-                    document.getElementById('guide').innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-
-                } else if(data.autoJibunAddress) {
-                    var expJibunAddr = data.autoJibunAddress;
-                    document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-
-                } else {
-                    document.getElementById('guide').innerHTML = '';
-                }
-            }
-        }).open();
-    }
-</script>
+                var fullRoadAddr = data.roadAddress;
+                var extraRoadAddr = '';
+                if(data.bname && /[동|로|가]$/g.test(data.bname)) extraRoadAddr += data.bname;
+                if(data.buildingName && data.apartment === 'Y
