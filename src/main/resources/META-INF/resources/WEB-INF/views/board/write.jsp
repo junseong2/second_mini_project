@@ -11,10 +11,10 @@
 <style type="text/css">
     /* 전체 글쓰기 화면 스타일 */
     .board-write-container {
-        width: 60%; /* 폼 크기 줄이기 */
+        width: 50%; /* 폼 크기 줄이기 */
         margin: 40px auto;
         padding: 30px;
-        background-color: #f5f2ed;
+
         border-radius: 8px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
