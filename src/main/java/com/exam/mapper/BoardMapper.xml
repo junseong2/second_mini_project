@@ -19,7 +19,7 @@
 	
 	<insert id="write" parameterType="BoardDTO">
 		insert into board (title, author, content,image)
-		values (#{title}, #{author}, #{content},#{image})
+		values (#{title}, #{author},#{content},#{image})
 	</insert>
 	
 	<select id="retrieve" parameterType="int" resultType="BoardDTO">
