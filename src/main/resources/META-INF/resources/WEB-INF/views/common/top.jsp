@@ -27,7 +27,9 @@
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link" href="loginForm">Login</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="signup">signup</a>
+						<li class="nav-item"><a class="nav-link" href="signup">Signup</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="list">Notice</a>
 						</li>
 
 					</ul>
@@ -54,6 +56,8 @@
 						<li class="nav-item"><a class="nav-link" href="mypage">mypage</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="cartList">cartList</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="list">Notice</a>
 						</li>
 					</ul>
 		</sec:authorize>

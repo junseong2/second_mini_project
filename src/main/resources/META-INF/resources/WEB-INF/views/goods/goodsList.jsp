@@ -10,7 +10,7 @@
     <input type="hidden" name="gCategory" value="${param.gCategory}">
     
     <label for="sort"></label>
-    <select name="sort" onchange="this.form.submit()" style="border-radius: 30px",text-align: center;>
+    <select name="sort" onchange="this.form.submit()" style="border-radius: 30px; text-align: center; margin-right:24px; width:150px; height:30px" >
         <option value="">정렬 기준 선택</option>
         <option value="price_desc" ${param.sort == 'price_desc' ? 'selected' : ''}>가격 높은순</option>
         <option value="price_asc" ${param.sort == 'price_asc' ? 'selected' : ''}>가격 낮은순</option>
