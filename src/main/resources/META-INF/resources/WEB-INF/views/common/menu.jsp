@@ -100,9 +100,9 @@ $(document).ready(function(){
 									<input type="text" name="search"
 									autocomplete="off"
 									placeholder="검색할 키워드를 입력하세요."
-									style="border-radius: 20px; width: 300px; height: 100%">
+									style="border-radius: 20px; width: 300px; height: 110%; padding:10px">
 									<button type="submit" class="btn btn-success"
-										style="border-radius: 10px; height: 100%;">검색</button></li>
+										style="border-radius: 10px; height: 100%; margin-bottom:7px">검색</button></li>
 							</ul>
 						</form>
 					</div>
