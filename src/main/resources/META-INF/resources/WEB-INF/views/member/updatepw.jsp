@@ -21,13 +21,13 @@
             <div class="row mb-3" style="margin-top:20px">
                 <label for="username" class="col-sm-2 col-form-label">아이디</label>
                 <div class="col-auto">
-                    <input type="text" class="form-control" id="userid" name="userid" required>
+                    <input autocomplete="off" type="text" class="form-control" id="userid" name="userid" required>
                 </div>
             </div>
             <div class="row mb-3" style="margin-top:20px">
                 <label for="username" class="col-sm-2 col-form-label">새 비밀번호</label>
                 <div class="col-auto">
-                    <input type="password" class="form-control" id="passwd" name="passwd" required>
+                    <input autocomplete="off" type="password" class="form-control" id="passwd" name="passwd" required>
                 </div>
             </div>
 
