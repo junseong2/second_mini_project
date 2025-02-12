@@ -169,7 +169,6 @@
         <!-- 이미지 표시 -->
         <c:if test="${not empty retrieve.image}">
             <div class="form-group">
-                <label>첨부 이미지:</label>
                 <img src="images/items/${retrieve.image}" alt="">
             </div>
         </c:if>
