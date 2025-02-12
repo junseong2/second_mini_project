@@ -28,6 +28,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int write(BoardDTO dto) {
 		return mapper.write(dto);
+	}
+
+	@Override
+	public BoardDTO retrieve(int num) {
+		return mapper.retrieve(num);
 	}	
 
 }
