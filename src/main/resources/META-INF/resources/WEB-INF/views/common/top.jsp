@@ -29,7 +29,7 @@
 						</li>
 						<li class="nav-item"><a class="nav-link" href="signup">Signup</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="list">Notice</a>
+						<li class="nav-item"><a class="nav-link" href="list">FAQ</a>
 						</li>
 
 					</ul>
@@ -57,7 +57,7 @@
 						</li>
 						<li class="nav-item"><a class="nav-link" href="cartList">cartList</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="list">Notice</a>
+						<li class="nav-item"><a class="nav-link" href="list">FAQ</a>
 						</li>
 					</ul>
 		</sec:authorize>
