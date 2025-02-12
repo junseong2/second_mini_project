@@ -9,7 +9,7 @@
     <!-- param을 사용하여 현재 URL의 파라미터 값을 가져옴 -->
     <input type="hidden" name="gCategory" value="${param.gCategory}">
     
-    <label for="sort">정렬:</label>
+    <label for="sort"></label>
     <select name="sort" onchange="this.form.submit()" style="border-radius: 30px",text-align: center;>
         <option value="">정렬 기준 선택</option>
         <option value="price_desc" ${param.sort == 'price_desc' ? 'selected' : ''}>가격 높은순</option>
