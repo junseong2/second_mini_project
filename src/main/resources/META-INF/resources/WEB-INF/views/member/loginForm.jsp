@@ -1,46 +1,74 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<script src="webjars/jquery/3.7.1/jquery.min.js"></script>
-<script>
-  $(document).ready(function(){
-	  
-	  // 로그인 처리
-	  $("form").on("submit", function(){
-		  this.action="auth";   // LoginServlet
-		  this.method="post";   // doPost
-	  });
-	  
-	  // 취소 버튼 누르면 홈
-	  $("#reset").on("click", function(){
-		 window.location.href="/minipj2/main"; 
-	  });
-  });
-</script>
+    pageEncoding="UTF-8"%>
+<%@page import="java.util.List" %>
 
-<div
-	class="container d-flex justify-content-center align-items-center vh-80">
-	<div class="card shadow-lg p-4" style="width: 400px;">
-		<h3 class="text-center mb-3">로그인</h3>
+<%@ taglib prefix="c"  uri="jakarta.tags.core" %>
 
-		<form>
-			<div class="mb-3">
-				<input type="text" id="userid" name="userid"
-					class="form-control shadow-sm" autocomplete="off"
-					placeholder="아이디 입력">
-			</div>
-			<div class="mb-3">
-				<input type="password" id="passwd" name="passwd"
-					class="form-control shadow-sm" placeholder="비밀번호 입력">
-			</div>
-			<div class="d-flex justify-content-between mb-3">
-				<a href="findid" class="text-decoration-none">아이디 찾기</a> <a
-					href="updatepw" class="text-decoration-none">비밀번호 재설정</a>
-			</div>
-			<div class="d-grid gap-2">
-				<button type="submit" class="btn btn-success btn-lg">로그인</button>
-				<button type="reset" id="reset" class="btn btn-warning btn-lg">취소</button>
-			</div>
-		</form>
 
-	</div>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <h1>게시판 목록보기</h1>
+    <hr>
+    <table border="1">
+      <tr>
+        <th>글번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회수</th>
+      </tr>
+	<c:set var="pageDTO"  value="${findAll}" />
+	<c:forEach var="dto" items="${pageDTO.list}">
+      <tr>
+        <td>${dto.num}</td>
+        <td>
+         <a href="retrieve?num=${dto.num}">
+          ${dto.title}      
+         </a>
+         </td>
+        <td>${dto.author}</td>
+        <td>${dto.writeday}</td>
+        <td>${dto.readcnt}</td>
+      </tr>
+     </c:forEach>
+ 
+      
+      <!--  페이지 번호 출력 -->
+   <tr>
+    <td colspan="5">   
+ 
+		  <c:set var="curPage" value="${pageDTO.curPage}" /> 
+		  <c:set var="perPage" value="${pageDTO.perPage}" /> 
+		  <c:set var="totalRecord" value="${pageDTO.totalRecord}" /> 
+		  <c:set var="totalPage" value="${totalRecord/perPage}" /> 
+		  <c:if test="${totalRecord % perPage != 0}">
+		    <c:set var="totalPage" value="${totalPage+1}" /> 
+		  </c:if>
+		  <c:forEach var="i"  begin="1" end="${totalPage}">
+		    <c:if test="${i==curPage}">
+		       ${i}&nbsp;
+		    </c:if>
+		    <c:if test="${i != curPage}">
+		       <a href="list?curPage=${i}">${i}&nbsp;</a>
+		    </c:if>
+		  </c:forEach>
+
+    </td>
+   </tr> 
+
+    </table>
+    <a href="writeUI">글쓰기</a>
+  
+   <!--   
+    <script>
+       alert('<= list %>');
+       alert(<= xxx %>);
+    </script>
+    --> 
+</body>
+</html>
