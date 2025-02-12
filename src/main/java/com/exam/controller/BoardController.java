@@ -82,9 +82,13 @@ public class BoardController {
 	@GetMapping("/retrieve")
 	public String retrieve(@RequestParam String num, Model m) {
 		BoardDTO dto = boardService.retrieve(Integer.parseInt(num));
-		m.addAttribute("retrieve", dto);
 
-		return "retrieve";
+		m.addAttribute("retrieve",dto); 
+		
+		int n = boardService.readcnt(Integer.parseInt(num));
+		
+		return "retrieve"; 
+
 	}
 
 	@GetMapping("/updateBoard")
