@@ -39,6 +39,11 @@ public class BoardServiceImpl implements BoardService {
 	public int update(BoardDTO dto) {
 		// TODO Auto-generated method stub
 		return mapper.update(dto);
+	}
+
+	@Override
+	public int delete(int num) {
+		return mapper.delete(num);
 	}	
 
 }
