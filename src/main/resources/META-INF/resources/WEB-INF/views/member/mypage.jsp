@@ -16,6 +16,8 @@
                   action: "/minipj2/update",  
                   method: "post"        
               }).submit();  
+          } else {
+        	  return false;
           }
       });
 
@@ -26,6 +28,8 @@
                   action: "/minipj2/withdraw",  
                   method: "post"        
               }).submit();  
+          } else {
+        	  return false;
           }
       });
   });
