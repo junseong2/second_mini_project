@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Validated
-//@SessionAttributes("login")
+//@SessionAttributes("login") 
 @Slf4j
 public class MemberController {
 	
