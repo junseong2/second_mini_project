@@ -5,6 +5,7 @@
 <%@ taglib prefix="c"  uri="jakarta.tags.core" %>
 
 
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,3 +73,10 @@
     --> 
 </body>
 </html>
+=======
+	</div>
+
+</div>
+
+
+>>>>>>> 57d3614733c90cdece0d7f2a93d08c8ab76f759a
