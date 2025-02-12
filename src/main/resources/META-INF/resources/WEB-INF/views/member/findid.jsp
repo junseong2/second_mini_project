@@ -21,7 +21,7 @@
             <div class="row mb-3" style="margin-top:20px">
                 <label for="username" class="col-sm-2 col-form-label">이름</label>
                 <div class="col-auto">
-                    <input type="text" class="form-control" id="username" name="username" required>
+                    <input autocomplete="off" type="text" class="form-control" id="username" name="username" required>
                 </div>
             </div>
 
@@ -34,8 +34,8 @@
                             <option value="010" selected>010</option>
                             <option value="011">011</option>
                         </select>
-                        <input type="text" class="form-control" id="phone2" name="phone2" required placeholder="중간자리">
-                        <input type="text" class="form-control" id="phone3" name="phone3" required placeholder="뒷자리">
+                        <input autocomplete="off" type="text" class="form-control" id="phone2" name="phone2" required placeholder="중간자리">
+                        <input autocomplete="off" type="text" class="form-control" id="phone3" name="phone3" required placeholder="뒷자리">
                     </div>
                 </div>
             </div>
