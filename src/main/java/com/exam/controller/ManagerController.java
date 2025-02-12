@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.exam.dto.GoodsDTO;
 import com.exam.service.GoodsService;
@@ -56,7 +57,8 @@ public class ManagerController {
                                 @RequestParam String gName,
                                 @RequestParam String gContent,
                                 @RequestParam int gPrice,
-                                @RequestParam MultipartFile gImage) {
+                                @RequestParam MultipartFile gImage,
+                                RedirectAttributes redirectAttributes) {
 
         String imageFileName = gImage.getOriginalFilename(); 
 //        File f = new File("C:/springboot3_study/sts-4.27.0.RELEASE/workspace/second_mini_project/src/main/resources/static/images/items/", imageFileName);
@@ -73,6 +75,8 @@ public class ManagerController {
         GoodsDTO goods = new GoodsDTO(gCode, gCategory, gName, gContent, gPrice, imageFileName);
 
         goodsService.goodsAdd(goods);
+        
+        redirectAttributes.addFlashAttribute("message", "상품이 정상적으로 등록되었습니다.");
         
         return "redirect:/main";  
     }
