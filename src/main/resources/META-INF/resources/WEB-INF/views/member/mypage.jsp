@@ -16,6 +16,8 @@
                   action: "/minipj2/update",  
                   method: "post"        
               }).submit();  
+          } else {
+        	  return false;
           }
       });
 
@@ -26,13 +28,15 @@
                   action: "/minipj2/withdraw",  
                   method: "post"        
               }).submit();  
+          } else {
+        	  return false;
           }
       });
   });
 </script>
 
-<div class="container">
-	<form class="row g-3 m-4" id="myForm" action="" method="post">
+<div class="container" >
+	<form autocomplete="off" class="row g-3 m-4" id="myForm" action="" method="post">
 		<div class="row mb-3">
 			<label for="userid" class="col-sm-2 col-form-label"> 아이디</label>
 			<div class="col-auto">
@@ -115,9 +119,9 @@
 			</div>
 		</div>
 		<div class="col-12">
-			<button type="submit" id="update" class="btn btn-primary">update</button>
+			<button type="submit" id="update" class="btn btn-success">update</button>
 			<button type="reset" id="reset" class="btn btn-primary">cancel</button>
-			<button type="submit" id="withdraw" class="btn btn-primary">탈퇴하기</button>
+			<button type="submit" id="withdraw" class="btn btn-danger">탈퇴하기</button>
 		</div>
 	</form>
 
