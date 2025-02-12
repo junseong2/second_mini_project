@@ -44,6 +44,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int delete(int num) {
 		return mapper.delete(num);
+	}
+
+	@Override
+	public int readcnt(int num) {
+		return mapper.readcnt(num);
 	}	
 
 }

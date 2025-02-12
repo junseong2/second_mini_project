@@ -71,7 +71,9 @@ public class BoardController {
 		BoardDTO dto = boardService.retrieve(Integer.parseInt(num));
 		m.addAttribute("retrieve",dto); 
 		
-		return "retrieve";
+		int n = boardService.readcnt(Integer.parseInt(num));
+		
+		return "retrieve"; 
 	}
 	
 	@GetMapping("/updateBoard") 
