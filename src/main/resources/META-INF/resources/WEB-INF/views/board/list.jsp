@@ -83,7 +83,7 @@
 <body>
 
 <div class="board-list-container">
-    <h1>NOTICE</h1>
+    <h1>FAQ</h1>
     
     <hr>
 
@@ -115,8 +115,8 @@
         </tbody>
     </table>
 
-    <!-- 글쓰기 버튼 -->
-    <a href="boardwrite" class="btn-add">글쓰기</a>
+    <!-- 글쓰기 버튼 
+    <a href="boardwrite" class="btn-add">글쓰기</a> -->
 </div>
 
 </body>
