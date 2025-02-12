@@ -93,12 +93,15 @@ public class BoardController {
 
 	@GetMapping("/updateBoard")
 	public String updateBoard(@RequestParam String num, @RequestParam String title, @RequestParam String author,
-			@RequestParam String content) {
+			@RequestParam String content,@RequestParam String image) {
 		BoardDTO dto = new BoardDTO();
 		dto.setNum(Integer.parseInt(num));
 		dto.setTitle(title);
 		dto.setAuthor(author);
 		dto.setContent(content);
+		
+
+		dto.setImage(image);
 
 		int n = boardService.update(dto);
 

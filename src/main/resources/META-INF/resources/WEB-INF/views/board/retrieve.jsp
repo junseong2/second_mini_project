@@ -138,7 +138,7 @@
 <body>
 <div class="board-write-container">
     <h1>글 수정 및 삭제</h1>
-    <form id="updateBoard" action="#" method="post">
+    <form id="updateBoard" action="#" method="post" enctype="multipart/form-data">
         <input type="hidden" name="num" value="${retrieve.num }">
 		<input type="hidden" name="author" value="${retrieve.author }">
 		<input type="hidden" name="image" value="${retrieve.image }">
