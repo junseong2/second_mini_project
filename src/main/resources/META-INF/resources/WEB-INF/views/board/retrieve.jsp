@@ -137,7 +137,7 @@
 
 <body>
 <div class="board-write-container">
-    <h1>글 수정 및 삭제</h1>
+    <h1>FAQ</h1>
     <form id="updateBoard" action="#" method="post" enctype="multipart/form-data">
         <input type="hidden" name="num" value="${retrieve.num }">
 		<input type="hidden" name="author" value="${retrieve.author }">
@@ -161,10 +161,18 @@
         <!-- 제목 입력 필드 -->
         <div class="form-group-horizontal">
             <label for="title">제목 </label>
-            <input type="text" name="title" value="${retrieve.title }" style="width:70%; border-radius:20px">
+           <!-- <input type="text" name="title" value="${retrieve.title }" style="width:70%; border-radius:20px"> --> 
+            ${retrieve.title }
         </div>
+        
+        <hr>
 
-
+        <!-- 내용 입력 필드 -->
+        <div class="form-group">
+            <label for="content">답변</label>
+           <!-- <textarea name="content" style="border-radius:20px">${retrieve.content }</textarea>	 --> 
+            ${retrieve.content }
+        </div>
 
         <!-- 이미지 표시 -->
         <c:if test="${not empty retrieve.image}">
@@ -173,16 +181,13 @@
             </div>
         </c:if>
         
-        <!-- 내용 입력 필드 -->
-        <div class="form-group">
-            <label for="content">내용</label>
-            <textarea name="content" style="border-radius:20px">${retrieve.content }</textarea>
-        </div>
 
+<!-- 
         <div class="form-actions">
             <button id="updateBtn">수정</button>
             <button id="deleteBtn">삭제</button>
         </div>
+         -->
     </form>
 
     <a href="list">목록</a>

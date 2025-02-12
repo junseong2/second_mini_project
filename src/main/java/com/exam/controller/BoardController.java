@@ -55,29 +55,34 @@ public class BoardController {
 	}
 
 	@PostMapping("/boardwrite")
-	public String write(@RequestParam String title, 
-            @RequestParam String author,
-            @RequestParam String content,
-            @RequestParam MultipartFile image) {
-		BoardDTO dto = new BoardDTO();
-		  //  DTO에 이미지 파일명 저장
+	   public String write(@RequestParam String title, @RequestParam String author, @RequestParam String content,
+	         @RequestParam MultipartFile image) {
+	      BoardDTO dto = new BoardDTO();
+	      // DTO에 이미지 파일명 저장
+	      //이미지가 있을 때만 파일 업로드 처리하기
+	      if (image != null && !image.isEmpty()) {
 
-		String imageFileNames = image.getOriginalFilename();
-		File f = new File("C://upload", imageFileNames);
-		try {
- 
-			image.transferTo(new File(f.toString()));
+	         String imageFileNames = image.getOriginalFilename();
+	         File f = new File("C://upload", imageFileNames);
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		} 
-		dto.setTitle(title);
-		dto.setAuthor(author); 
-		dto.setContent(content); 
-		dto.setImage(imageFileNames);
-		boardService.write(dto);
-		return "redirect:list";
-	}
+	         try {
+
+	            image.transferTo(new File(f.toString()));
+
+	         } catch (IOException e) {
+	            e.printStackTrace();
+	         }
+	         dto.setImage(imageFileNames);
+	      } else {
+	         dto.setImage(null);
+
+	      }
+	      dto.setTitle(title);
+	      dto.setAuthor(author);
+	      dto.setContent(content);
+	      boardService.write(dto);
+	      return "redirect:list";
+	   }
 
 	@GetMapping("/retrieve")
 	public String retrieve(@RequestParam String num, Model m) {
