@@ -90,4 +90,12 @@ public class BoardController {
 		return "redirect:list";
 	}
 	
+	@GetMapping("/deleteBoard")
+	public String deleteBoard(@RequestParam String num) {
+		
+		int n = boardService.delete(Integer.parseInt(num));
+		
+		return "redirect:list";
+	}
+	
 }

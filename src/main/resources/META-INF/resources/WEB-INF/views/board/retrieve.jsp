@@ -15,7 +15,7 @@
 	    $("#deleteBtn").on("click", function(){
 	    	//event.preventDefault();
 	    	var f = $("#updateBoard")[0];
-	    	f.action="list";
+	    	f.action="deleteBoard";
 	    	f.method="GET";
 	    });
 	    
