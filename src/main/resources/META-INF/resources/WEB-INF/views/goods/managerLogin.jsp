@@ -25,7 +25,7 @@
 <div class="container d-flex justify-content-center align-items-center vh-80">
     <div class="card shadow-lg p-4" style="width: 400px;">
         <h3 class="text-center mb-4">관리자 로그인</h3>
-        <form autocomplete="off">
+        <form >
             <div class="mb-3">
                                 <label for="managerConfirm" class="form-label fw-semibold text-dark">🔒 관리자 암호</label>
                 <input type="password" class="form-control shadow-sm w-80" id="managerConfirm" name="managerConfirm">

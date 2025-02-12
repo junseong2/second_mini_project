@@ -31,11 +31,10 @@
 
 <div
 	class="container d-flex justify-content-center align-items-center vh-80">
-	<div class="card shadow-lg p-4" style="width: 800px;">
+	<div class="" style="width: 800px;">
 		<h3 class="text-center mb-4">회원가입</h3>
 
-
-		<form>
+		<form autocomplete="off">
 			<div class="row">
 				<!-- 왼쪽 컬럼: 기본 정보 -->
 				<div class="col-md-6">
@@ -43,7 +42,7 @@
 						<label class="form-label">* 아이디</label>
 						<div class="input-group">
 							<input type="text" class="form-control shadow-sm" id="userid"
-								name="userid" required>
+								name="userid" required autocomplete="off">
 							<button type="button" class="btn btn-primary"
 								id="idDupulicatedcheck">중복확인</button>
 						</div>
@@ -51,19 +50,20 @@
 					</div>
 					<div class="mb-2">
 						<label class="form-label">* 비밀번호</label> <input type="password"
-							class="form-control shadow-sm" name="passwd" id="passwd" required>
+							class="form-control shadow-sm" name="passwd" id="passwd" required
+							autocomplete="off">
 					</div>
 					<div class="mb-2">
 						<label class="form-label">비밀번호 확인</label> <input type="password"
-							class="form-control shadow-sm" name="passwd2" id="passwd2">
-						<small id="pwdcheck" class="d-block mt-1"></small>
+							class="form-control shadow-sm" name="passwd2" id="passwd2"
+							autocomplete="off"> <small id="pwdcheck"
+							class="d-block mt-1"></small>
 					</div>
 					<div class="mb-2">
 						<label class="form-label">* 이름</label> <input type="text"
 							class="form-control shadow-sm" name="username" id="username"
-							required>
+							required autocomplete="off">
 					</div>
-
 				</div>
 
 				<!-- 오른쪽 컬럼: 주소 입력 -->
@@ -72,37 +72,41 @@
 						<label class="form-label">우편번호</label>
 						<div class="input-group">
 							<input type="text" name="post" class="form-control"
-								id="sample4_postcode">
+								id="sample4_postcode" autocomplete="off">
 							<button type="button" class="btn btn-primary"
 								onclick="sample4_execDaumPostcode()">검색</button>
 						</div>
 					</div>
 					<div class="mb-2">
 						<label class="form-label">도로명 주소</label> <input type="text"
-							name="addr1" class="form-control" id="sample4_roadAddress">
+							name="addr1" class="form-control" id="sample4_roadAddress"
+							autocomplete="off">
 					</div>
 					<div class="mb-2">
 						<label class="form-label">지번 주소</label> <input type="text"
-							name="addr2" class="form-control" id="sample4_jibunAddress">
+							name="addr2" class="form-control" id="sample4_jibunAddress"
+							autocomplete="off">
 					</div>
 					<small id="guide" class="text-muted"></small>
-									<div class="mb-2">
-					<label class="form-label">전화번호</label>
-					<div class="input-group">
-						<select name="phone1" class="form-select">
-							<option value="010">010</option>
-							<option value="011">011</option>
-						</select> <input type="text" name="phone2" class="form-control" required>
-						<input type="text" name="phone3" class="form-control" required>
+					<div class="mb-2">
+						<label class="form-label">전화번호</label>
+						<div class="input-group">
+							<select name="phone1" class="form-select">
+								<option value="010">010</option>
+								<option value="011">011</option>
+							</select> <input type="text" name="phone2" class="form-control" required
+								autocomplete="off"> <input type="text" name="phone3"
+								class="form-control" required autocomplete="off">
+						</div>
 					</div>
-				</div>
 				</div>
 				<div class="mb-2">
 					<label class="form-label">이메일</label>
 					<div class="input-group">
-						<input type="text" name="email1" class="form-control"> <span
-							class="input-group-text">@</span> <input type="text"
-							name="email2" class="form-control" placeholder="직접입력"> <select
+						<input type="text" name="email1" class="form-control"
+							autocomplete="off"> <span class="input-group-text">@</span>
+						<input type="text" name="email2" class="form-control"
+							placeholder="직접입력" autocomplete="off"> <select
 							name="email3" class="form-select" id="email3">
 							<option value="daum.net">daum.net</option>
 							<option value="google.com">google.com</option>
@@ -110,14 +114,12 @@
 						</select>
 					</div>
 				</div>
-
 			</div>
 
 			<!-- 가입/취소 버튼 -->
 			<div class="mt-3 d-flex justify-content-center gap-2">
 				<button type="submit" class="btn btn-success btn-lg">가입하기</button>
-				<button type="reset" id="reset"
-					class="btn btn-warning btn-lg">취소</button>
+				<button type="reset" id="reset" class="btn btn-warning btn-lg">취소</button>
 			</div>
 		</form>
 	</div>
@@ -131,4 +133,11 @@
                 var fullRoadAddr = data.roadAddress;
                 var extraRoadAddr = '';
                 if(data.bname && /[동|로|가]$/g.test(data.bname)) extraRoadAddr += data.bname;
-                if(data.buildingName && data.apartment === 'Y
+                if(data.buildingName && data.apartment === 'Y') extraRoadAddr += (extraRoadAddr ? ', ' : '') + data.buildingName;
+                document.getElementById("sample4_roadAddress").value = fullRoadAddr;
+                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+                document.getElementById("sample4_postcode").value = data.zonecode;
+            }
+        }).open();
+    }
+</script>
