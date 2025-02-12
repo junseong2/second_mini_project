@@ -61,9 +61,17 @@ public class BoardController {
 		dto.setTitle(title);
 		dto.setAuthor(author);
 		dto.setContent(content);
-		
+		 
 		int n = boardService.write(dto);
 		return "redirect:list";
+	}
+	
+	@GetMapping("/retrieve")
+	public String retrieve(@RequestParam String num, Model m) {
+		BoardDTO dto = boardService.retrieve(Integer.parseInt(num));
+		m.addAttribute("retrieve",dto); 
+		
+		return "retrieve";
 	}
 	
 }
