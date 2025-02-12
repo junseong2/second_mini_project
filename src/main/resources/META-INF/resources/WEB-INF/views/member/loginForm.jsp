@@ -16,17 +16,41 @@
 	  });
   });//end ready
 </script>
+
+<style>
+
+  #idform {
+    position: absolute; /* 부모를 기준으로 절대 위치 */
+    top: 50%; /* 화면 중앙에 위치하도록 설정 */
+    left: 50%;
+    transform: translate(-50%, -50%); /* 정확한 중앙 배치를 위한 변환 */
+    width: 100%;
+    max-width: 700px; /* 폼의 최대 너비 제한 */
+    padding: 20px;
+    background-color: #fcf7e8;
+    border-radius: 20px; /* 폼 모서리 둥글게 */
+
+  }
+  
+  .row .mb-3 {
+  	display:flex;
+  	justify-content:center;
+  	align-items:center;
+  }
+  
+</style>
+
+
 <div class="container">
-	<div>${errorMessage }</div>
-    <form class="row g-3 m-4">
+    <form class="row g-3 m-4" id="idform">
 		  <div class="row mb-3">
-		    <label for="userid" class="col-sm-2 col-form-label">아이디</label>
+		    <label for="userid" class="col-sm-2 col-form-label"><span style="font-weight:700">아이디</span></label>
 		    <div class="col-auto">
 		      <input autocomplete="off" type="text" class="form-control" id="userid" name="userid">
 		    </div>
 		  </div>
 		 <div class="row mb-3">
-		    <label for="password" class="col-sm-2 col-form-label">비밀번호</label>
+		    <label for="password" class="col-sm-2 col-form-label"><span style="font-weight:700">비밀번호</span></label>
 		    <div class="col-auto">
 		      <input type="password" class="form-control" name="passwd" id="passwd">
 		    </div>
