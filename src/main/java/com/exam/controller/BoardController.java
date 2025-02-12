@@ -45,5 +45,49 @@ public class BoardController {
 		
 		return "list"; 
 	}
+	
+	
+	@GetMapping("/boardwrite")
+	public String writeUI() {
+		return "write";
+	} 
 
+	
+	@PostMapping("/boardwrite")
+	public String write(@RequestParam String title,
+			@RequestParam String author,
+			@RequestParam String content) {
+		BoardDTO dto = new BoardDTO();
+		dto.setTitle(title);
+		dto.setAuthor(author);
+		dto.setContent(content);
+		 
+		int n = boardService.write(dto);
+		return "redirect:list";
+	}
+	
+	@GetMapping("/retrieve")
+	public String retrieve(@RequestParam String num, Model m) {
+		BoardDTO dto = boardService.retrieve(Integer.parseInt(num));
+		m.addAttribute("retrieve",dto); 
+		
+		return "retrieve";
+	}
+	
+	@GetMapping("/updateBoard") 
+	public String updateBoard(@RequestParam String num,
+			@RequestParam String title,
+			@RequestParam String author,
+			@RequestParam String content) {
+		BoardDTO dto = new BoardDTO();
+		dto.setNum(Integer.parseInt(num));
+		dto.setTitle(title);
+		dto.setAuthor(author);
+		dto.setContent(content);
+		
+		int n = boardService.update(dto);
+		
+		return "redirect:list";
+	}
+	
 }
