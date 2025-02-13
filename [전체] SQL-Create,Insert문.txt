@@ -7,7 +7,7 @@ create table board(
 	author VARCHAR(50) NOT NULL,
 	content VARCHAR(2000) NOT NULL,
 	writeday DATE DEFAULT (current_date),
-	readcnt INT DEFAULT 0
+	readcnt INT DEFAULT 0,
 	image VARCHAR(255) default null;
 );
 
@@ -25,7 +25,7 @@ CREATE TABLE cart (
    KEY cart_gCode_fk (gCode),
    CONSTRAINT cart_gCode_fk FOREIGN KEY (gCode) REFERENCES leegoods (gCode) ON DELETE CASCADE,
    CONSTRAINT cart_userid_fk FOREIGN KEY (userid) REFERENCES member (userid) ON DELETE CASCADE
- )
+ );
 
 #feedback 테이블 생성문
 CREATE TABLE feedback (
@@ -44,7 +44,7 @@ CREATE TABLE leegoods (
    gPrice int NOT NULL,
    gImage varchar(20) NOT NULL,
    PRIMARY KEY (gCode)
- ) 
+ ) ;
 
 #member 테이블 생성문
 CREATE TABLE member (
@@ -60,7 +60,7 @@ CREATE TABLE member (
    email1 varchar(20) NOT NULL,
    email2 varchar(20) NOT NULL,
    PRIMARY KEY (userid)
- ) 
+ ) ;
 
 #orderinfo 테이블 생성문
 CREATE TABLE orderinfo (
@@ -81,7 +81,7 @@ CREATE TABLE orderinfo (
    KEY orderInfo_gCode_fk (gCode),
    CONSTRAINT orderInfo_gCode_fk FOREIGN KEY (gCode) REFERENCES leegoods (gCode) ON DELETE CASCADE,
    CONSTRAINT orderInfo_userid_fk FOREIGN KEY (userid) REFERENCES member (userid) ON DELETE CASCADE
- ) 
+ ) ;
 
 
 ####################################################################
