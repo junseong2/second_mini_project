@@ -103,6 +103,10 @@
         .form-actions {
             text-align: center;
         }
+        
+        img {
+        	margin : 0 auto;
+        }
 
         button {
             padding: 10px 20px;
@@ -177,7 +181,7 @@
         <!-- 이미지 표시 -->
         <c:if test="${not empty retrieve.image}">
             <div class="form-group">
-                <img src="images/items/${retrieve.image}" alt="">
+                <img src="images/items/${retrieve.image}" alt="" width="50%" height="50%">
             </div>
         </c:if>
         
