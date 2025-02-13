@@ -1,0 +1,31 @@
+#bowling 카테고리 추가함으로 인해
+#bowling 에는 gSize 및 gColor 수정이 안되도록 "기본" 으로 설정되게 함
+#원래 gSize는 CHAR(1) 이었는데 varchar(5)로 수정
+
+#cart 테이블 수정
+ALTER TABLE cart
+MODIFY COLUMN gSize VARCHAR(5) NOT NULL;
+
+#orderinfo 테이블 수정
+ALTER TABLE orderinfo
+MODIFY COLUMN gSize VARCHAR(5) NOT NULL;
+
+
+#goods 테이블 대신 현재 프로젝트에서 사용할 leegoods 테이블 생성 및 insert
+   create table leegoods
+   ( gCode varchar(20) PRIMARY KEY, -- 상품코드
+     gCategory varchar(20) not null,
+     gName varchar(50) not null,
+     gContent varchar(4000) not null,
+     gPrice INT not null,
+     gImage varchar(20) not null );
+     
+insert into leegoods values ('BALL01',	'sojung', '[공] EQUINOX (이쿼녹스)',	'비대칭 코어 디자인에 새로운 접근을 제시하는 EQUINOX', '299000', 'BALL01.gif');
+insert into leegoods values ('BALL02',	'sojung', '[공] HYPER MOTER (하이퍼모터)',	'최고의 스펙으로 가장 큰 볼 모션에 도전하는 HYPER MOTER', '299000', 'BALL02.gif');
+insert into leegoods values ('BALL03',	'sojung', '[공] THE CODE 2 (더코드 2)',	'코드시리즈의 황태자, THE CODE 2', '299000', 'BALL03.gif');
+insert into leegoods values ('BALL04',	'sojung', '[공] PHYSIX SOLID (피직스 솔리드)',	'최신 기술과 전통적인 느낌을 동시에, PHYSIX SOLID', '289000', 'BALL04.gif');
+  
+insert into leegoods values ('TSHIRT01','sojung', 'RT-BE-02 티셔츠',	'MIDNIGHT BLUE 색상의 티셔츠', '48000', 'TSHIRT01.gif');
+insert into leegoods values ('TSHIRT02','sojung', 'RT-BE-01 티셔츠',	'CORAL PINK 색상의 티셔츠', '48000', 'TSHIRT02.gif');
+insert into leegoods values ('TSHIRT03','sojung', 'ST-BE-05 티셔츠',	'NAVY / MINT 색상의 티셔츠', '48000', 'TSHIRT03.gif');
+insert into leegoods values ('TSHIRT04','sojung', 'ST-BE-09 티셔츠',	'NAVY / PURPLE 색상의 티셔츠', '48000', 'TSHIRT04.gif');
