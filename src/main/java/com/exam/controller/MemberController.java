@@ -24,6 +24,7 @@ import com.exam.dto.MemberDTO;
 import com.exam.service.GoodsService;
 import com.exam.service.MemberService;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.extern.slf4j.Slf4j;
@@ -210,13 +211,15 @@ public class MemberController {
 	@PostMapping("/withdraw")
 	public String withdraw(@ModelAttribute("login") MemberDTO loginMember, 
 	                       RedirectAttributes redirectAttributes,
-	                       SessionStatus sessionStatus) {
+	                       SessionStatus sessionStatus,
+	                       HttpSession session) {
 
 	    String userid = loginMember.getUserid(); 
  
 	    int n = memberService.withdraw(userid);
 	    if (n > 0) {
 	        sessionStatus.setComplete();
+	        session.invalidate();
 	        redirectAttributes.addFlashAttribute("message", "회원 탈퇴가 정상적으로 완료되었습니다.");
 	    } else {
 	        redirectAttributes.addFlashAttribute("error", "회원 탈퇴에 실패했습니다.");
