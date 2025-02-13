@@ -24,6 +24,7 @@ import com.exam.dto.MemberDTO;
 import com.exam.service.GoodsService;
 import com.exam.service.MemberService;
 
+
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -227,6 +228,7 @@ public class MemberController {
 
 	    return "redirect:/main";
 	}
+
 
 
 	
