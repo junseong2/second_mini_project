@@ -37,7 +37,6 @@
 		<form autocomplete="off">
 			<div class="row">
 				<!-- 왼쪽 컬럼: 기본 정보 -->
-				
 					<div class="mb-2">
 						<div class="input-group">
 							<input type="text" class="form-control shadow-sm" id="userid"
