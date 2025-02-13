@@ -81,9 +81,9 @@
 						<input type="text" name="email2" id="email2" class="form-control"
 							placeholder="직접입력" autocomplete="off"> <select
 							name="email3" class="form-select" id="email3">
+							<option value="naver.com">naver.com</option>
 							<option value="daum.net">daum.net</option>
 							<option value="google.com">google.com</option>
-							<option value="naver.com">naver.com</option>
 						</select>
 					</div>
 				</div>
