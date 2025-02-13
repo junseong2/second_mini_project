@@ -1,8 +1,0 @@
-#feedback 관련 테이블 생성
-
-CREATE TABLE feedback (
-    userid VARCHAR(20) NOT NULL,
-    gCode VARCHAR(20) NOT NULL,
-    gContext VARCHAR(100) NOT NULL,
-    feedbackdate DATE DEFAULT (current_date)
-);
